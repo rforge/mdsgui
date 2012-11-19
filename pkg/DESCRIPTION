@@ -10,4 +10,5 @@ Description: A graphical user interface (GUI) for performing Multidimensional Sc
 License: GPL (>= 3)
 LazyLoad: yes
 OS_type: windows
+SystemRequirements: windows
 
