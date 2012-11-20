@@ -1,3 +1,0 @@
-export(MDSgui)
-
-import(tkrplot,rpanel,tcltk,graphics,tcltk2,MASS,boot,RColorBrewer,rgl,scatterplot3d,smacof)
