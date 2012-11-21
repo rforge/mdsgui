@@ -1,6 +1,8 @@
 MDSgui <-
 function () 
 {
+	tclRequire("Tktable")
+tclRequire("BWidget")
     newUser <- function() {
         NewU = tktoplevel()
         tkwm.resizable(NewU, "0", "0")
