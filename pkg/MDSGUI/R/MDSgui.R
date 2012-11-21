@@ -15,7 +15,7 @@ function ()
             background = "white")
         tkplace(frameNU, relx = 0.02, rely = 0.02, relwidth = 0.96, 
             relheight = 0.96, `in` = NewU)
-        tkplace(tk2label(frameNU, text = "Enter your Name", background = "white"), 
+        tkplace(tklabel(frameNU, text = "Enter your Name", background = "white"), 
             relx = 0.05, rely = 0.3, `in` = frameNU)
         UNinput = tclVar("")
         UNtext = tkentry(NewU, width = 15, textvariable = UNinput)
@@ -674,7 +674,7 @@ function ()
             background = "white")
         tkplace(frameLab, relx = 0.02, rely = 0.02, relwidth = 0.96, 
             relheight = 0.96, `in` = Labtt)
-        tkplace(tk2label(frameLab, text = "Choose the Point Name", 
+        tkplace(tklabel(frameLab, text = "Choose the Point Name", 
             background = "white"), relx = 0.05, rely = 0.3, `in` = frameLab)
         objnames = rownames(MGvar$activedata)
         LabInput.val = tclVar(objnames[1])
@@ -739,7 +739,7 @@ function ()
             background = "white")
         tkplace(frameCPC, relx = 0.05, rely = 0.05, relheight = 0.9, 
             relwidth = 0.9, `in` = MGcomp$CPCol)
-        tkplace(tk2label(frameCPC, text = "The cursor is now active. Please\nuse the cursor to select the point\nwhose colour you wish to change.", 
+        tkplace(tklabel(frameCPC, text = "The cursor is now active. Please\nuse the cursor to select the point\nwhose colour you wish to change.", 
             background = "white"), relx = 0.1, rely = 0.2, `in` = frameCPC)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             tkbind(img, "<Button-1>", GetCoordsLeftClick.PointCol)
@@ -800,7 +800,7 @@ function ()
             ptcol <- MGvar$activeplot.pointcol.T5
             ptcol.temp <- MGvar$activeplot.pointcol.T5
         }
-        tkplace(tk2label(framePC, text = paste(rownames(MGvar$MDSmat)[Closest]), 
+        tkplace(tklabel(framePC, text = paste(rownames(MGvar$MDSmat)[Closest]), 
             background = "white"), relx = 0.1, rely = 0.35, `in` = framePC)
         ChangePtCol <- function() {
             ptcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -1503,16 +1503,16 @@ function ()
         tkplace(frameLabS, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = LabStt)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(frameLabS, text = "Each point on the Shepard Plot represents the MDS \nfound distance between each object pairing in the \nactive data. In order to choose a point please select \nthe names of two objects in the data.", 
+        tkplace(tklabel(frameLabS, text = "Each point on the Shepard Plot represents the MDS \nfound distance between each object pairing in the \nactive data. In order to choose a point please select \nthe names of two objects in the data.", 
             font = fontsmall), relx = 0.05, rely = 0.1, `in` = frameLabS)
-        tkplace(tk2label(frameLabS, text = "Enter the Object1", 
+        tkplace(tklabel(frameLabS, text = "Enter the Object1", 
             background = "white"), relx = 0.08, rely = 0.5, `in` = frameLabS)
         objnames = rownames(MGvar$MDSmat)
         LabInput1.val = tclVar(objnames[1])
         LabInput1.ComboBox <- tkwidget(LabStt, "ComboBox", editable = FALSE, 
             values = objnames, width = 12, textvariable = LabInput1.val)
         tkplace(LabInput1.ComboBox, relx = 0.6, rely = 0.5, `in` = frameLabS)
-        tkplace(tk2label(frameLabS, text = "Enter the Object2", 
+        tkplace(tklabel(frameLabS, text = "Enter the Object2", 
             background = "white"), relx = 0.08, rely = 0.65, 
             `in` = frameLabS)
         LabInput2.val = tclVar(objnames[2])
@@ -2108,7 +2108,7 @@ function ()
             background = "white")
         tkplace(frameLab, relx = 0.02, rely = 0.02, relwidth = 0.96, 
             relheight = 0.96, `in` = Labtt)
-        tkplace(tk2label(frameLab, text = "Enter the Point Name", 
+        tkplace(tklabel(frameLab, text = "Enter the Point Name", 
             background = "white"), relx = 0.05, rely = 0.3, `in` = frameLab)
         LabInput.val = tclVar("")
         LabInput = tkentry(Labtt, width = 15, textvariable = LabInput.val)
@@ -2363,16 +2363,16 @@ function ()
             background = "white")
         tkplace(frameLDO, relx = 0.02, rely = 0.02, relwidth = 0.96, 
             relheight = 0.96, `in` = LDO)
-        tkplace(tk2label(frameLDO, text = "The Data that you have uploaded has a number of objects\n greater than 50. Some processes of the MDS-GUI may\n run very slowly with data of this size. You are advised\n to deactivate the following.", 
+        tkplace(tklabel(frameLDO, text = "The Data that you have uploaded has a number of objects\n greater than 50. Some processes of the MDS-GUI may\n run very slowly with data of this size. You are advised\n to deactivate the following.", 
             background = "white"), relx = 0.05, rely = 0.15, 
             `in` = frameLDO)
-        tkplace(tk2label(frameLDO, text = "Scree Plot", background = "white"), 
+        tkplace(tklabel(frameLDO, text = "Scree Plot", background = "white"), 
             relx = 0.15, rely = 0.5, `in` = frameLDO)
         DScree = tclVar(1)
         DScree.CB <- tk2checkbutton(LDO)
         tkconfigure(DScree.CB, variable = DScree)
         tkplace(DScree.CB, relx = 0.75, rely = 0.5, `in` = frameLDO)
-        tkplace(tk2label(frameLDO, text = "Shepard Plot", background = "white"), 
+        tkplace(tklabel(frameLDO, text = "Shepard Plot", background = "white"), 
             relx = 0.15, rely = 0.6, `in` = frameLDO)
         DShep = tclVar(1)
         DShep.CB <- tk2checkbutton(LDO)
@@ -2416,7 +2416,7 @@ function ()
                 background = "white")
             tkplace(frameNaming, relx = 0.02, rely = 0.02, relwidth = 0.96, 
                 relheight = 0.16, `in` = namingtt)
-            tkplace(tk2label(frameNaming, text = "Enter the name of your DataSet", 
+            tkplace(tklabel(frameNaming, text = "Enter the name of your DataSet", 
                 background = "white"), relx = 0.08, rely = 0.4, 
                 `in` = frameNaming)
             ChangingName = tclVar("")
@@ -2427,10 +2427,10 @@ function ()
             tkplace(frameTrans, relx = 0.02, rely = 0.19, relwidth = 0.96, 
                 relheight = 0.3, `in` = namingtt)
             fontsmall <- tkfont.create(family = "times", size = 9)
-            tkplace(tk2label(frameTrans, text = "All procedures in this package require that the active data have\n objects as rows and variables as columns. If your data is not\n in this format then please transpose.", 
+            tkplace(tklabel(frameTrans, text = "All procedures in this package require that the active data have\n objects as rows and variables as columns. If your data is not\n in this format then please transpose.", 
                 font = fontsmall), relx = 0.05, rely = 0.15, 
                 `in` = frameTrans)
-            tkplace(tk2label(frameTrans, text = "Transpose Active Data?", 
+            tkplace(tklabel(frameTrans, text = "Transpose Active Data?", 
                 background = "white"), relx = 0.08, rely = 0.65, 
                 `in` = frameTrans)
             cbtrans <- tk2checkbutton(namingtt)
@@ -2441,10 +2441,10 @@ function ()
                 background = "white")
             tkplace(frameScale, relx = 0.02, rely = 0.5, relwidth = 0.96, 
                 relheight = 0.2, `in` = namingtt)
-            tkplace(tk2label(frameScale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
+            tkplace(tklabel(frameScale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
                 font = fontsmall), relx = 0.04, rely = 0.25, 
                 `in` = frameScale)
-            tkplace(tk2label(frameScale, text = "Scale your active data?", 
+            tkplace(tklabel(frameScale, text = "Scale your active data?", 
                 background = "white"), relx = 0.08, rely = 0.6, 
                 `in` = frameScale)
             ScDat.val <- tclVar(0)
@@ -2455,16 +2455,16 @@ function ()
                 background = "white")
             tkplace(frameCol, relx = 0.02, rely = 0.71, relwidth = 0.96, 
                 relheight = 0.2, `in` = namingtt)
-            tkplace(tk2label(frameCol, text = "Does the data contain a column of object category information?", 
+            tkplace(tklabel(frameCol, text = "Does the data contain a column of object category information?", 
                 font = fontsmall), relx = 0.02, rely = 0.25, 
                 `in` = frameCol)
-            tkplace(tk2label(frameCol, text = "Yes", background = "white"), 
+            tkplace(tklabel(frameCol, text = "Yes", background = "white"), 
                 relx = 0.1, rely = 0.6, `in` = frameCol)
             ColDat <- tclVar(0)
             ColDat.CB <- tk2checkbutton(namingtt)
             tkconfigure(ColDat.CB, variable = ColDat)
             tkplace(ColDat.CB, relx = 0.25, rely = 0.6, `in` = frameCol)
-            tkplace(tk2label(frameCol, text = "Which Column?", 
+            tkplace(tklabel(frameCol, text = "Which Column?", 
                 background = "white"), relx = 0.4, rely = 0.6, 
                 `in` = frameCol)
             ColColumn <- tclVar("First")
@@ -2609,7 +2609,7 @@ function ()
                 background = "white")
             tkplace(frameNaming, relx = 0.02, rely = 0.02, relwidth = 0.96, 
                 relheight = 0.25, `in` = namingtt)
-            tkplace(tk2label(frameNaming, text = "Enter the name of your DataSet", 
+            tkplace(tklabel(frameNaming, text = "Enter the name of your DataSet", 
                 background = "white"), relx = 0.08, rely = 0.4, 
                 `in` = frameNaming)
             ChangingName = tclVar("")
@@ -2620,10 +2620,10 @@ function ()
                 background = "white")
             tkplace(frameScale, relx = 0.02, rely = 0.29, relwidth = 0.96, 
                 relheight = 0.25, `in` = namingtt)
-            tkplace(tk2label(frameScale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
+            tkplace(tklabel(frameScale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
                 font = fontsmall), relx = 0.04, rely = 0.25, 
                 `in` = frameScale)
-            tkplace(tk2label(frameScale, text = "Scale your active data?", 
+            tkplace(tklabel(frameScale, text = "Scale your active data?", 
                 background = "white"), relx = 0.08, rely = 0.6, 
                 `in` = frameScale)
             ScDat.val <- tclVar(0)
@@ -2634,16 +2634,16 @@ function ()
                 background = "white")
             tkplace(frameCol, relx = 0.02, rely = 0.56, relwidth = 0.96, 
                 relheight = 0.27, `in` = namingtt)
-            tkplace(tk2label(frameCol, text = "Does the data contain a column of object category information?", 
+            tkplace(tklabel(frameCol, text = "Does the data contain a column of object category information?", 
                 font = fontsmall), relx = 0.02, rely = 0.25, 
                 `in` = frameCol)
-            tkplace(tk2label(frameCol, text = "Yes", background = "white"), 
+            tkplace(tklabel(frameCol, text = "Yes", background = "white"), 
                 relx = 0.1, rely = 0.6, `in` = frameCol)
             ColDat <- tclVar(0)
             ColDat.CB <- tk2checkbutton(namingtt)
             tkconfigure(ColDat.CB, variable = ColDat)
             tkplace(ColDat.CB, relx = 0.25, rely = 0.6, `in` = frameCol)
-            tkplace(tk2label(frameCol, text = "Which Column?", 
+            tkplace(tklabel(frameCol, text = "Which Column?", 
                 background = "white"), relx = 0.4, rely = 0.6, 
                 `in` = frameCol)
             ColColumn <- tclVar("First")
@@ -2816,7 +2816,7 @@ function ()
                 background = "white")
             tkplace(frameNaming, relx = 0.02, rely = 0.02, relwidth = 0.96, 
                 relheight = 0.25, `in` = namingtt)
-            tkplace(tk2label(frameNaming, text = "Enter the name of your DataSet", 
+            tkplace(tklabel(frameNaming, text = "Enter the name of your DataSet", 
                 background = "white"), relx = 0.08, rely = 0.4, 
                 `in` = frameNaming)
             ChangingName = tclVar("")
@@ -2827,10 +2827,10 @@ function ()
                 background = "white")
             tkplace(frameScale, relx = 0.02, rely = 0.29, relwidth = 0.96, 
                 relheight = 0.25, `in` = namingtt)
-            tkplace(tk2label(frameScale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
+            tkplace(tklabel(frameScale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
                 font = fontsmall), relx = 0.04, rely = 0.25, 
                 `in` = frameScale)
-            tkplace(tk2label(frameScale, text = "Scale your active data?", 
+            tkplace(tklabel(frameScale, text = "Scale your active data?", 
                 background = "white"), relx = 0.08, rely = 0.6, 
                 `in` = frameScale)
             ScDat.val <- tclVar(0)
@@ -2841,16 +2841,16 @@ function ()
                 background = "white")
             tkplace(frameCol, relx = 0.02, rely = 0.56, relwidth = 0.96, 
                 relheight = 0.27, `in` = namingtt)
-            tkplace(tk2label(frameCol, text = "Does tdahe data contain a column of object category information?", 
+            tkplace(tklabel(frameCol, text = "Does tdahe data contain a column of object category information?", 
                 font = fontsmall), relx = 0.02, rely = 0.25, 
                 `in` = frameCol)
-            tkplace(tk2label(frameCol, text = "Yes", background = "white"), 
+            tkplace(tklabel(frameCol, text = "Yes", background = "white"), 
                 relx = 0.1, rely = 0.6, `in` = frameCol)
             ColDat <- tclVar(0)
             ColDat.CB <- tk2checkbutton(namingtt)
             tkconfigure(ColDat.CB, variable = ColDat)
             tkplace(ColDat.CB, relx = 0.25, rely = 0.6, `in` = frameCol)
-            tkplace(tk2label(frameCol, text = "Which Column?", 
+            tkplace(tklabel(frameCol, text = "Which Column?", 
                 background = "white"), relx = 0.4, rely = 0.6, 
                 `in` = frameCol)
             ColColumn <- tclVar("First")
@@ -3027,7 +3027,7 @@ function ()
                 background = "white")
             tkplace(frameNaming, relx = 0.05, rely = 0.02, relwidth = 0.9, 
                 relheight = 0.9, `in` = namingtt)
-            tkplace(tk2label(frameNaming, text = "Enter the name of your DataSet", 
+            tkplace(tklabel(frameNaming, text = "Enter the name of your DataSet", 
                 background = "white"), relx = 0.05, rely = 0.3, 
                 `in` = frameNaming)
             ChangingName = tclVar("")
@@ -5694,16 +5694,16 @@ function ()
         tkplace(frame3D, relx = 0.05, rely = 0.02, relwidth = 0.9, 
             relheight = 0.8, `in` = threeD)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(frame3D, text = "A three dimensional plot will now be created. This plot may been\ndone as a static image in the Static 3D Plot tab or as an interactive\nRGL plot in an external window (Or both!). Please make your\nchoice below.", 
+        tkplace(tklabel(frame3D, text = "A three dimensional plot will now be created. This plot may been\ndone as a static image in the Static 3D Plot tab or as an interactive\nRGL plot in an external window (Or both!). Please make your\nchoice below.", 
             font = fontsmall), relx = 0.08, rely = 0.1, `in` = frame3D)
-        tkplace(tk2label(frame3D, text = "Static plot in Tab", 
+        tkplace(tklabel(frame3D, text = "Static plot in Tab", 
             background = "white"), relx = 0.15, rely = 0.45, 
             `in` = frame3D)
         Cstat.CB <- tk2checkbutton(threeD)
         Cstat.val <- tclVar("1")
         tkconfigure(Cstat.CB, variable = Cstat.val)
         tkplace(Cstat.CB, relx = 0.75, rely = 0.45, `in` = frame3D)
-        tkplace(tk2label(frame3D, text = "External RGL plot", 
+        tkplace(tklabel(frame3D, text = "External RGL plot", 
             background = "white"), relx = 0.15, rely = 0.6, `in` = frame3D)
         Crgl.CB <- tk2checkbutton(threeD)
         Crgl.val <- tclVar("1")
@@ -6135,12 +6135,12 @@ function ()
             background = "white")
         tkplace(frameRAR1, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.47, `in` = RAR.1)
-        tkplace(tk2label(frameRAR1, text = "Direction", background = "white"), 
+        tkplace(tklabel(frameRAR1, text = "Direction", background = "white"), 
             relx = 0.1, rely = 0.2, `in` = frameRAR1)
         RAR.spinner.Dir <- tk2spinbox(R.A.R, values = c("Anti-Clockwise", 
             "Clockwise"), textvariable = RAR.Rotate.Dir, width = 15)
         tkplace(RAR.spinner.Dir, relx = 0.6, rely = 0.2, `in` = frameRAR1)
-        tkplace(tk2label(frameRAR1, text = "Angle of Rotation", 
+        tkplace(tklabel(frameRAR1, text = "Angle of Rotation", 
             background = "white"), relx = 0.1, rely = 0.6, `in` = frameRAR1)
         RAR.spinner.Deg <- tk2spinbox(R.A.R, from = 0, to = 180, 
             increment = 10, textvariable = RAR.Rotate.Val, width = 15)
@@ -6149,9 +6149,9 @@ function ()
             background = "white")
         tkplace(frameRAR2, relx = 0.02, relwidth = 0.96, rely = 0.51, 
             relheight = 0.47, `in` = RAR.1)
-        tkplace(tk2label(frameRAR2, text = "Rotate about X-Axis", 
+        tkplace(tklabel(frameRAR2, text = "Rotate about X-Axis", 
             background = "white"), relx = 0.1, rely = 0.2, `in` = frameRAR2)
-        tkplace(tk2label(frameRAR2, text = "Rotate about Y-Axis", 
+        tkplace(tklabel(frameRAR2, text = "Rotate about Y-Axis", 
             background = "white"), relx = 0.1, rely = 0.6, `in` = frameRAR2)
         RAR.cb.xrot <- tk2checkbutton(R.A.R)
         RARcbVx <- tclVar("0")
@@ -6286,14 +6286,14 @@ function ()
             background = "white")
         tkplace(frameDims, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = Dimensions)
-        tkplace(tk2label(frameDims, text = "Choose Number of Dimensions for MDS", 
+        tkplace(tklabel(frameDims, text = "Choose Number of Dimensions for MDS", 
             background = "white"), relx = 0.18, rely = 0.1, `in` = frameDims)
         dims = seq(1:MGvar$maxdims)
         Dim.ComboBox <- tkwidget(MDSops, "ComboBox", editable = FALSE, 
             values = dims, width = 12, textvariable = MDS.dim)
         tkplace(Dim.ComboBox, relx = 0.36, rely = 0.3, `in` = frameDims)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(frameDims, text = "Please note that only Dimensions 1,2 and 3 can be plotted.\nMDS output with 4 dimensions or more will only be in\ncoordinate format. Otherwise a subset of any 2 or 3 dimensions\nwill be available for plotting.", 
+        tkplace(tklabel(frameDims, text = "Please note that only Dimensions 1,2 and 3 can be plotted.\nMDS output with 4 dimensions or more will only be in\ncoordinate format. Otherwise a subset of any 2 or 3 dimensions\nwill be available for plotting.", 
             font = fontsmall), relx = 0.04, rely = 0.485, `in` = frameDims)
         ChangeD <- function() {
             MGvar$temp.dims <<- as.numeric(tclvalue(MDS.dim))
@@ -6312,23 +6312,23 @@ function ()
             background = "white")
         tkplace(frameSConf, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = SConfig)
-        tkplace(tk2label(frameSConf, text = "Many of the MDS procedures in the MDS-GUI make use of\na set of coordinates as the starting configuration. The default\nstarting configuration is in the form of the result of Classical\nScaling. Please choose your desired starting configuration.", 
+        tkplace(tklabel(frameSConf, text = "Many of the MDS procedures in the MDS-GUI make use of\na set of coordinates as the starting configuration. The default\nstarting configuration is in the form of the result of Classical\nScaling. Please choose your desired starting configuration.", 
             font = fontsmall), relx = 0.06, rely = 0.1, `in` = frameSConf)
-        tkplace(tk2label(frameSConf, text = "Result of Classic Scaling", 
+        tkplace(tklabel(frameSConf, text = "Result of Classic Scaling", 
             background = "white"), relx = 0.18, rely = 0.42, 
             `in` = frameSConf)
         MDSops.UseCS.RB <- tk2radiobutton(MDSops)
         tkconfigure(MDSops.UseCS.RB, variable = MGvar$MDSops.startconfig, 
             value = "ClasScal")
         tkplace(MDSops.UseCS.RB, relx = 0.1, rely = 0.42, `in` = frameSConf)
-        tkplace(tk2label(frameSConf, text = "Random Configuration", 
+        tkplace(tklabel(frameSConf, text = "Random Configuration", 
             background = "white"), relx = 0.18, rely = 0.54, 
             `in` = frameSConf)
         MDSops.UseRC.RB <- tk2radiobutton(MDSops)
         tkconfigure(MDSops.UseRC.RB, variable = MGvar$MDSops.startconfig, 
             value = "RandConf")
         tkplace(MDSops.UseRC.RB, relx = 0.1, rely = 0.54, `in` = frameSConf)
-        tkplace(tk2label(frameSConf, text = "Use Existing Configuration in:", 
+        tkplace(tklabel(frameSConf, text = "Use Existing Configuration in:", 
             background = "white"), relx = 0.18, rely = 0.66, 
             `in` = frameSConf)
         MDSops.UseEC.RB <- tk2radiobutton(MDSops)
@@ -6356,9 +6356,9 @@ function ()
             background = "white")
         tkplace(frameSC, relx = 0.05, relwidth = 0.9, rely = 0.02, 
             relheight = 0.9, `in` = StressCalc)
-        tkplace(tk2label(frameSC, text = "A number of options exist for the indication of goodness\nof fit for an MDS configuration. This measure is referred\nto as 'Stress'. Select the Stress you would like to use.", 
+        tkplace(tklabel(frameSC, text = "A number of options exist for the indication of goodness\nof fit for an MDS configuration. This measure is referred\nto as 'Stress'. Select the Stress you would like to use.", 
             font = fontsmall), relx = 0.06, rely = 0.1, `in` = frameSC)
-        tkplace(tk2label(frameSC, text = "Stress Calculation Method", 
+        tkplace(tklabel(frameSC, text = "Stress Calculation Method", 
             background = "white"), relx = 0.27, rely = 0.4, `in` = frameSC)
         SC.ComboBox <- tkwidget(MDSops, "ComboBox", editable = FALSE, 
             values = c("Norm. Raw Stress", "STRESS1", "STRESS2", 
@@ -6423,7 +6423,7 @@ function ()
         tkplace(frameLD, relx = 0.05, rely = 0.02, relwidth = 0.9, 
             relheight = 0.8, `in` = LargeDim)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(frameLD, text = "You are attempting to perform an MDS procedure with more than 3 dimensions.\nYou may now choose to plot any two of the resultant dimensions in 2D or 3D\nformat. Any resulting 2D configuration will be output to the Active Plot.", 
+        tkplace(tklabel(frameLD, text = "You are attempting to perform an MDS procedure with more than 3 dimensions.\nYou may now choose to plot any two of the resultant dimensions in 2D or 3D\nformat. Any resulting 2D configuration will be output to the Active Plot.", 
             font = fontsmall), relx = 0.02, rely = 0.08, `in` = frameLD)
         LargeDimNB <- tk2notebook(LargeDim, tabs = NULL)
         LD.t1 <- tk2frame(LargeDimNB)
@@ -6432,9 +6432,9 @@ function ()
             background = "white")
         tkplace(frame2D, relx = 0.005, relwidth = 0.99, rely = 0.005, 
             relheight = 0.99, `in` = LD.t1)
-        tkplace(tk2label(frame2D, text = "Plotting X Dimension", 
+        tkplace(tklabel(frame2D, text = "Plotting X Dimension", 
             background = "white"), relx = 0.1, rely = 0.12, `in` = frame2D)
-        tkplace(tk2label(frame2D, text = "Dimension", background = "white"), 
+        tkplace(tklabel(frame2D, text = "Dimension", background = "white"), 
             relx = 0.6, rely = 0.12, `in` = frame2D)
         dimensions = c()
         for (i in 0:(MGvar$MDS.dimensions - 1)) {
@@ -6446,9 +6446,9 @@ function ()
         XDim.val <- tclVar("1")
         tkconfigure(XDim.spin, textvariable = XDim.val)
         tkplace(XDim.spin, relx = 0.8, rely = 0.12, `in` = frame2D)
-        tkplace(tk2label(frame2D, text = "Plotting Y Dimension", 
+        tkplace(tklabel(frame2D, text = "Plotting Y Dimension", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frame2D)
-        tkplace(tk2label(frame2D, text = "Dimension", background = "white"), 
+        tkplace(tklabel(frame2D, text = "Dimension", background = "white"), 
             relx = 0.6, rely = 0.4, `in` = frame2D)
         YDim.spin <- tk2spinbox(LargeDim, values = dimensions, 
             width = 2)
@@ -6476,27 +6476,27 @@ function ()
             background = "white")
         tkplace(frame3D, relx = 0.005, relwidth = 0.99, rely = 0.005, 
             relheight = 0.99, `in` = LD.t2)
-        tkplace(tk2label(frame3D, text = "Plotting X Dimension", 
+        tkplace(tklabel(frame3D, text = "Plotting X Dimension", 
             background = "white"), relx = 0.1, rely = 0.12, `in` = frame3D)
-        tkplace(tk2label(frame3D, text = "Dimension", background = "white"), 
+        tkplace(tklabel(frame3D, text = "Dimension", background = "white"), 
             relx = 0.6, rely = 0.12, `in` = frame3D)
         XDim3D.spin <- tk2spinbox(LargeDim, values = dimensions, 
             width = 2)
         XDim3D.val <- tclVar("1")
         tkconfigure(XDim3D.spin, textvariable = XDim3D.val)
         tkplace(XDim3D.spin, relx = 0.8, rely = 0.12, `in` = frame3D)
-        tkplace(tk2label(frame3D, text = "Plotting Y Dimension", 
+        tkplace(tklabel(frame3D, text = "Plotting Y Dimension", 
             background = "white"), relx = 0.1, rely = 0.3, `in` = frame3D)
-        tkplace(tk2label(frame3D, text = "Dimension", background = "white"), 
+        tkplace(tklabel(frame3D, text = "Dimension", background = "white"), 
             relx = 0.6, rely = 0.3, `in` = frame3D)
         YDim3D.spin <- tk2spinbox(LargeDim, values = dimensions, 
             width = 2)
         YDim3D.val <- tclVar("2")
         tkconfigure(YDim3D.spin, textvariable = YDim3D.val)
         tkplace(YDim3D.spin, relx = 0.8, rely = 0.3, `in` = frame3D)
-        tkplace(tk2label(frame3D, text = "Plotting Z Dimension", 
+        tkplace(tklabel(frame3D, text = "Plotting Z Dimension", 
             background = "white"), relx = 0.1, rely = 0.48, `in` = frame3D)
-        tkplace(tk2label(frame3D, text = "Dimension", background = "white"), 
+        tkplace(tklabel(frame3D, text = "Dimension", background = "white"), 
             relx = 0.6, rely = 0.48, `in` = frame3D)
         ZDim3D.spin <- tk2spinbox(LargeDim, values = dimensions, 
             width = 2)
@@ -6563,32 +6563,32 @@ function ()
             background = "white")
         tkplace(frameCGen, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ConfGen)
-        tkplace(tk2label(frameCGen, text = "Display Main Title", 
+        tkplace(tklabel(frameCGen, text = "Display Main Title", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameCGen)
         Conf.Main.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.Main.CB, variable = MGvar$Conf.Main.val)
         tkplace(Conf.Main.CB, relx = 0.7, rely = 0.1, `in` = frameCGen)
-        tkplace(tk2label(frameCGen, text = "Display Distance Measure", 
+        tkplace(tklabel(frameCGen, text = "Display Distance Measure", 
             background = "white"), relx = 0.1, rely = 0.22, `in` = frameCGen)
         Conf.Dist.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.Dist.CB, variable = MGvar$Conf.Dist.val)
         tkplace(Conf.Dist.CB, relx = 0.7, rely = 0.22, `in` = frameCGen)
-        tkplace(tk2label(frameCGen, text = "Display Legend", 
-            background = "white"), relx = 0.1, rely = 0.34, `in` = frameCGen)
+        tkplace(tklabel(frameCGen, text = "Display Legend", background = "white"), 
+            relx = 0.1, rely = 0.34, `in` = frameCGen)
         Conf.Leg.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.Leg.CB, variable = MGvar$Conf.Leg.val)
         tkplace(Conf.Leg.CB, relx = 0.7, rely = 0.34, `in` = frameCGen)
-        tkplace(tk2label(frameCGen, text = "Provide Label for Y-Axis", 
+        tkplace(tklabel(frameCGen, text = "Provide Label for Y-Axis", 
             background = "white"), relx = 0.1, rely = 0.46, `in` = frameCGen)
         Conf.Ylab.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.Ylab.CB, variable = MGvar$Conf.Ylab.val)
         tkplace(Conf.Ylab.CB, relx = 0.7, rely = 0.46, `in` = frameCGen)
-        tkplace(tk2label(frameCGen, text = "Provide Label for X-Axis", 
+        tkplace(tklabel(frameCGen, text = "Provide Label for X-Axis", 
             background = "white"), relx = 0.1, rely = 0.58, `in` = frameCGen)
         Conf.Xlab.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.Xlab.CB, variable = MGvar$Conf.Xlab.val)
         tkplace(Conf.Xlab.CB, relx = 0.7, rely = 0.58, `in` = frameCGen)
-        tkplace(tk2label(frameCGen, text = "Background Colour", 
+        tkplace(tklabel(frameCGen, text = "Background Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = frameCGen)
         ChangeColBG <- function() {
             MGvar$activeplot.bg.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -6765,7 +6765,7 @@ function ()
                   background = "white")
                 tkplace(frameCY, relx = 0.01, relwidth = 0.98, 
                   rely = 0.01, relheight = 0.98, `in` = CYlabtt)
-                tkplace(tk2label(frameCY, text = "Enter your Label for Y-Axis", 
+                tkplace(tklabel(frameCY, text = "Enter your Label for Y-Axis", 
                   background = "white"), relx = 0.05, rely = 0.25, 
                   `in` = frameCY)
                 YInput = tclVar("")
@@ -6834,7 +6834,7 @@ function ()
                   background = "white")
                 tkplace(frameCX, relx = 0.01, relwidth = 0.98, 
                   rely = 0.01, relheight = 0.98, `in` = CXlabtt)
-                tkplace(tk2label(frameCX, text = "Enter your Label for X-Axis", 
+                tkplace(tklabel(frameCX, text = "Enter your Label for X-Axis", 
                   background = "white"), relx = 0.05, rely = 0.25, 
                   `in` = frameCX)
                 XInput = tclVar("")
@@ -6896,24 +6896,24 @@ function ()
             background = "white")
         tkplace(frameCPoints, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ConfPoints)
-        tkplace(tk2label(frameCPoints, text = "Display Points", 
+        tkplace(tklabel(frameCPoints, text = "Display Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameCPoints)
         Conf.Points.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.Points.CB, variable = MGvar$Conf.Points.val)
         tkplace(Conf.Points.CB, relx = 0.7, rely = 0.1, `in` = frameCPoints)
-        tkplace(tk2label(frameCPoints, text = "Display Point Labels", 
+        tkplace(tklabel(frameCPoints, text = "Display Point Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameCPoints)
         Conf.Labels.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.Labels.CB, variable = MGvar$Conf.Labels.val)
         tkplace(Conf.Labels.CB, relx = 0.7, rely = 0.25, `in` = frameCPoints)
-        tkplace(tk2label(frameCPoints, text = "Point Size", background = "white"), 
+        tkplace(tklabel(frameCPoints, text = "Point Size", background = "white"), 
             relx = 0.1, rely = 0.4, `in` = frameCPoints)
         Conf.PS.var <- tclVar(MGvar$activeplot.cex)
         Conf.PS.spin <- tk2spinbox(CPlotOps, from = 0.1, to = 2, 
             increment = 0.1, width = 12)
         tkconfigure(Conf.PS.spin, textvariable = Conf.PS.var)
         tkplace(Conf.PS.spin, relx = 0.6, rely = 0.4, `in` = frameCPoints)
-        tkplace(tk2label(frameCPoints, text = "Point Type", background = "white"), 
+        tkplace(tklabel(frameCPoints, text = "Point Type", background = "white"), 
             relx = 0.1, rely = 0.55, `in` = frameCPoints)
         shapes <- c("Empty Boxes", "Filled Boxes", "Crosses", 
             "Empty Triangles", "Filled Triangles", "Filled Circles", 
@@ -6921,7 +6921,7 @@ function ()
         Conf.PT.ComboBox <- tkwidget(CPlotOps, "ComboBox", editable = FALSE, 
             values = shapes, width = 12, textvariable = MGvar$Conf.PT.var)
         tkplace(Conf.PT.ComboBox, relx = 0.6, rely = 0.55, `in` = frameCPoints)
-        tkplace(tk2label(frameCPoints, text = "Point Colour", 
+        tkplace(tklabel(frameCPoints, text = "Point Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = frameCPoints)
         ChangeColPoints <- function() {
             MGvar$activeplot.pointcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -7229,12 +7229,12 @@ function ()
             background = "white")
         tkplace(frameCLines, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ConfLines)
-        tkplace(tk2label(frameCLines, text = "Display Regression Axes", 
+        tkplace(tklabel(frameCLines, text = "Display Regression Axes", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameCLines)
         Conf.RegLine.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.RegLine.CB, variable = MGvar$Conf.RegLine.val)
         tkplace(Conf.RegLine.CB, relx = 0.7, rely = 0.1, `in` = frameCLines)
-        tkplace(tk2label(frameCLines, text = "Display Distance Lines Between \nPoints Corresponding to \nShepard Points", 
+        tkplace(tklabel(frameCLines, text = "Display Distance Lines Between \nPoints Corresponding to \nShepard Points", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameCLines)
         Conf.DistLine.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.DistLine.CB, variable = MGvar$Conf.DistLine.val)
@@ -7376,12 +7376,12 @@ function ()
             background = "white")
         tkplace(frameCAxes, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ConfAxes)
-        tkplace(tk2label(frameCAxes, text = "Display Axes Measures", 
+        tkplace(tklabel(frameCAxes, text = "Display Axes Measures", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameCAxes)
         Conf.AxesMeas.CB <- tk2checkbutton(CPlotOps)
         tkconfigure(Conf.AxesMeas.CB, variable = MGvar$Conf.AxesMeas.val)
         tkplace(Conf.AxesMeas.CB, relx = 0.7, rely = 0.1, `in` = frameCAxes)
-        tkplace(tk2label(frameCAxes, text = "Axes Colour", background = "white"), 
+        tkplace(tklabel(frameCAxes, text = "Axes Colour", background = "white"), 
             relx = 0.1, rely = 0.25, `in` = frameCAxes)
         ChangeColAxes <- function() {
             MGvar$activeplot.axescol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -7675,22 +7675,22 @@ function ()
             background = "white")
         tkplace(frameSGen, relx = 0.02, rely = 0.02, relwidth = 0.96, 
             relheigh = 0.96, `in` = ShepGen)
-        tkplace(tk2label(frameSGen, text = "Display Main Title", 
+        tkplace(tklabel(frameSGen, text = "Display Main Title", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameSGen)
         Shep.Main.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Main.CB, variable = MGvar$Shep.Main.val)
         tkplace(Shep.Main.CB, relx = 0.7, rely = 0.1, `in` = frameSGen)
-        tkplace(tk2label(frameSGen, text = "Display X & Y Labels", 
+        tkplace(tklabel(frameSGen, text = "Display X & Y Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameSGen)
         Shep.Lab.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Lab.CB, variable = MGvar$Shep.Lab.val)
         tkplace(Shep.Lab.CB, relx = 0.7, rely = 0.25, `in` = frameSGen)
-        tkplace(tk2label(frameSGen, text = "Display Plot Legend", 
+        tkplace(tklabel(frameSGen, text = "Display Plot Legend", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameSGen)
         Shep.Leg.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Leg.CB, variable = MGvar$Shep.Leg.val)
         tkplace(Shep.Leg.CB, relx = 0.7, rely = 0.4, `in` = frameSGen)
-        tkplace(tk2label(frameSGen, text = "Background Colour", 
+        tkplace(tklabel(frameSGen, text = "Background Colour", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = frameSGen)
         ChangeColShepBG <- function() {
             MGvar$shepplot.bg.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -7747,23 +7747,23 @@ function ()
             background = "white")
         tkplace(frameSPoints, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ShepPoints)
-        tkplace(tk2label(frameSPoints, text = "Display Points", 
+        tkplace(tklabel(frameSPoints, text = "Display Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameSPoints)
         Shep.Points.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Points.CB, variable = MGvar$Shep.Points.val)
         tkplace(Shep.Points.CB, relx = 0.7, rely = 0.1, `in` = frameSPoints)
-        tkplace(tk2label(frameSPoints, text = "Display Point Labels", 
+        tkplace(tklabel(frameSPoints, text = "Display Point Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameSPoints)
         Shep.Labels.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Labels.CB, variable = MGvar$Shep.Labels.val)
         tkplace(Shep.Labels.CB, relx = 0.7, rely = 0.25, `in` = frameSPoints)
-        tkplace(tk2label(frameSPoints, text = "Point Size", background = "white"), 
+        tkplace(tklabel(frameSPoints, text = "Point Size", background = "white"), 
             relx = 0.1, rely = 0.4, `in` = frameSPoints)
         Shep.PS.spin <- tk2spinbox(SPlotOps, from = 0.1, to = 2, 
             increment = 0.1, width = 12)
         tkconfigure(Shep.PS.spin, textvariable = MGvar$Shep.PS.var)
         tkplace(Shep.PS.spin, relx = 0.6, rely = 0.4, `in` = frameSPoints)
-        tkplace(tk2label(frameSPoints, text = "Point Type", background = "white"), 
+        tkplace(tklabel(frameSPoints, text = "Point Type", background = "white"), 
             relx = 0.1, rely = 0.55, `in` = frameSPoints)
         shapes <- c("Empty Boxes", "Filled Boxes", "Crosses", 
             "Empty Triangles", "Filled Triangles", "Filled Circles", 
@@ -7771,7 +7771,7 @@ function ()
         Shep.PT.ComboBox <- tkwidget(SPlotOps, "ComboBox", editable = FALSE, 
             values = shapes, width = 12, textvariable = MGvar$Shep.PT.var)
         tkplace(Shep.PT.ComboBox, relx = 0.6, rely = 0.55, `in` = frameSPoints)
-        tkplace(tk2label(frameSPoints, text = "Point Colour", 
+        tkplace(tklabel(frameSPoints, text = "Point Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = frameSPoints)
         ChangeColShepPoints <- function() {
             MGvar$shepplot.pointcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -7850,19 +7850,19 @@ function ()
             background = "white")
         tkplace(frameSLines, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ShepLines)
-        tkplace(tk2label(frameSLines, text = "Display Shepard Line", 
+        tkplace(tklabel(frameSLines, text = "Display Shepard Line", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameSLines)
         Shep.Curve.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Curve.CB, variable = MGvar$Shep.Curve.val)
         tkplace(Shep.Curve.CB, relx = 0.7, rely = 0.1, `in` = frameSLines)
-        tkplace(tk2label(frameSLines, text = "Line Type", background = "white"), 
+        tkplace(tklabel(frameSLines, text = "Line Type", background = "white"), 
             relx = 0.1, rely = 0.25, `in` = frameSLines)
         Shep.LineT.ComboBox <- tkwidget(SPlotOps, "ComboBox", 
             editable = FALSE, values = c("Solid Line", "Dashed", 
                 "Dotted"), width = 12, textvariable = MGvar$Shep.LineT.val)
         tkplace(Shep.LineT.ComboBox, relx = 0.6, rely = 0.25, 
             `in` = frameSLines)
-        tkplace(tk2label(frameSLines, text = "Line Colour", background = "white"), 
+        tkplace(tklabel(frameSLines, text = "Line Colour", background = "white"), 
             relx = 0.1, rely = 0.4, `in` = frameSLines)
         ChangeColShepLine <- function() {
             MGvar$shepplot.curvecol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -7874,7 +7874,7 @@ function ()
         ShepColCurve <- tkbutton(SPlotOps, text = "", width = 2, 
             height = 1, bg = MGvar$shepplot.curvecol, command = function() ChangeColShepLine())
         tkplace(ShepColCurve, relx = 0.7, rely = 0.4, `in` = frameSLines)
-        tkplace(tk2label(frameSLines, text = "Bold", background = "white"), 
+        tkplace(tklabel(frameSLines, text = "Bold", background = "white"), 
             relx = 0.1, rely = 0.55, `in` = frameSLines)
         Shep.Bold.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Bold.CB, variable = MGvar$Shep.Bold.val)
@@ -7928,12 +7928,12 @@ function ()
             background = "white")
         tkplace(frameSAxes, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ShepAxes)
-        tkplace(tk2label(frameSAxes, text = "Display Axes Measures", 
+        tkplace(tklabel(frameSAxes, text = "Display Axes Measures", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameSAxes)
         Shep.Axes.CB <- tk2checkbutton(SPlotOps)
         tkconfigure(Shep.Axes.CB, variable = MGvar$Shep.Axes.val)
         tkplace(Shep.Axes.CB, relx = 0.7, rely = 0.1, `in` = frameSAxes)
-        tkplace(tk2label(frameSAxes, text = "Axes Colour", background = "white"), 
+        tkplace(tklabel(frameSAxes, text = "Axes Colour", background = "white"), 
             relx = 0.1, rely = 0.25, `in` = frameSAxes)
         ChangeShepAxescol <- function() {
             MGvar$shepplot.Axescol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8133,22 +8133,22 @@ function ()
             background = "white")
         tkplace(frameStGen, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = StressGen)
-        tkplace(tk2label(frameStGen, text = "Display Main Title", 
+        tkplace(tklabel(frameStGen, text = "Display Main Title", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameStGen)
         Stress.Main.CB <- tk2checkbutton(StPlotOps)
         tkconfigure(Stress.Main.CB, variable = MGvar$Stress.Main.val)
         tkplace(Stress.Main.CB, relx = 0.7, rely = 0.1, `in` = frameStGen)
-        tkplace(tk2label(frameStGen, text = "Display Process Time", 
+        tkplace(tklabel(frameStGen, text = "Display Process Time", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameStGen)
         Stress.Time.CB <- tk2checkbutton(StPlotOps)
         tkconfigure(Stress.Time.CB, variable = MGvar$Stress.Time.val)
         tkplace(Stress.Time.CB, relx = 0.7, rely = 0.25, `in` = frameStGen)
-        tkplace(tk2label(frameStGen, text = "Display X & Y Labels", 
+        tkplace(tklabel(frameStGen, text = "Display X & Y Labels", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameStGen)
         Stress.Lab.CB <- tk2checkbutton(StPlotOps)
         tkconfigure(Stress.Lab.CB, variable = MGvar$Stress.Lab.val)
         tkplace(Stress.Lab.CB, relx = 0.7, rely = 0.4, `in` = frameStGen)
-        tkplace(tk2label(frameStGen, text = "Background Colour", 
+        tkplace(tklabel(frameStGen, text = "Background Colour", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = frameStGen)
         ChangeColStressBG <- function() {
             MGvar$stressplot.bg.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8207,15 +8207,15 @@ function ()
             background = "white")
         tkplace(frameStLines, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = StressLines)
-        tkplace(tk2label(frameStLines, text = "Line Type", background = "white"), 
+        tkplace(tklabel(frameStLines, text = "Line Type", background = "white"), 
             relx = 0.1, rely = 0.1, `in` = frameStLines)
         Stress.LineT.ComboBox <- tkwidget(StPlotOps, "ComboBox", 
             editable = FALSE, values = c("Solid Line", "Dashed", 
                 "Dotted"), width = 12, textvariable = MGvar$Stress.LineT.val)
         tkplace(Stress.LineT.ComboBox, relx = 0.6, rely = 0.1, 
             `in` = frameStLines)
-        tkplace(tk2label(frameStLines, text = "Line Colour", 
-            background = "white"), relx = 0.1, rely = 0.25, `in` = frameStLines)
+        tkplace(tklabel(frameStLines, text = "Line Colour", background = "white"), 
+            relx = 0.1, rely = 0.25, `in` = frameStLines)
         ChangeColStressLine <- function() {
             MGvar$stressplot.curvecol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
                 .Tcl.args(initialcolor = MGvar$stressplot.curvecol.temp, 
@@ -8259,12 +8259,12 @@ function ()
             background = "white")
         tkplace(frameStAxes, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = StressAxes)
-        tkplace(tk2label(frameStAxes, text = "Display Axes Measures", 
+        tkplace(tklabel(frameStAxes, text = "Display Axes Measures", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameStAxes)
         Stress.Axes.CB <- tk2checkbutton(StPlotOps)
         tkconfigure(Stress.Axes.CB, variable = MGvar$Stress.Axes.val)
         tkplace(Stress.Axes.CB, relx = 0.7, rely = 0.1, `in` = frameStAxes)
-        tkplace(tk2label(frameStAxes, text = "Axes Colour", background = "white"), 
+        tkplace(tklabel(frameStAxes, text = "Axes Colour", background = "white"), 
             relx = 0.1, rely = 0.25, `in` = frameStAxes)
         ChangeStressAxescol <- function() {
             MGvar$stressplot.Axescol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8358,22 +8358,22 @@ function ()
             background = "white")
         tkplace(frameScGen, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheigh = 0.96, `in` = ScreeGen)
-        tkplace(tk2label(frameScGen, text = "Display Main Title", 
+        tkplace(tklabel(frameScGen, text = "Display Main Title", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameScGen)
         Scree.Main.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.Main.CB, variable = MGvar$Scree.Main.val)
         tkplace(Scree.Main.CB, relx = 0.7, rely = 0.1, `in` = frameScGen)
-        tkplace(tk2label(frameScGen, text = "Display X & Y Labels", 
+        tkplace(tklabel(frameScGen, text = "Display X & Y Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameScGen)
         Scree.Lab.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.Lab.CB, variable = MGvar$Scree.Lab.val)
         tkplace(Scree.Lab.CB, relx = 0.7, rely = 0.25, `in` = frameScGen)
-        tkplace(tk2label(frameScGen, text = "Display Plot Legend", 
+        tkplace(tklabel(frameScGen, text = "Display Plot Legend", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameScGen)
         Scree.Leg.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.Leg.CB, variable = MGvar$Scree.Leg.val)
         tkplace(Scree.Leg.CB, relx = 0.7, rely = 0.4, `in` = frameScGen)
-        tkplace(tk2label(frameScGen, text = "Background Colour", 
+        tkplace(tklabel(frameScGen, text = "Background Colour", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = frameScGen)
         ChangeColBG <- function() {
             MGvar$screeplot.bg.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8425,22 +8425,22 @@ function ()
             text = "Scree Plot Points", background = "white")
         tkplace(frameScPoints, relx = 0.02, relwidth = 0.96, 
             rely = 0.02, relheight = 0.96, `in` = ScreePoints)
-        tkplace(tk2label(frameScPoints, text = "Display All Points", 
+        tkplace(tklabel(frameScPoints, text = "Display All Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameScPoints)
         Scree.Points.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.Points.CB, variable = MGvar$Scree.Points.val)
         tkplace(Scree.Points.CB, relx = 0.8, rely = 0.1, `in` = frameScPoints)
-        tkplace(tk2label(frameScPoints, text = "Highlight Current Dimension Point", 
+        tkplace(tklabel(frameScPoints, text = "Highlight Current Dimension Point", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameScPoints)
         Scree.CDim.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.CDim.CB, variable = MGvar$Scree.CDim.val)
         tkplace(Scree.CDim.CB, relx = 0.8, rely = 0.25, `in` = frameScPoints)
-        tkplace(tk2label(frameScPoints, text = "Highlight Optimum Dimension Point", 
+        tkplace(tklabel(frameScPoints, text = "Highlight Optimum Dimension Point", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameScPoints)
         Scree.ODim.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.ODim.CB, variable = MGvar$Scree.ODim.val)
         tkplace(Scree.ODim.CB, relx = 0.8, rely = 0.4, `in` = frameScPoints)
-        tkplace(tk2label(frameScPoints, text = "Current Dimension Point Colour", 
+        tkplace(tklabel(frameScPoints, text = "Current Dimension Point Colour", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = frameScPoints)
         ChangeColCDim <- function() {
             MGvar$screeplot.Ccol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8452,7 +8452,7 @@ function ()
         ScreeCcol <- tkbutton(ScPlotOps, text = "", width = 2, 
             height = 1, bg = MGvar$screeplot.Ccol, command = function() ChangeColCDim())
         tkplace(ScreeCcol, relx = 0.8, rely = 0.55, `in` = frameScPoints)
-        tkplace(tk2label(frameScPoints, text = "Optimum Dimension Point Colour", 
+        tkplace(tklabel(frameScPoints, text = "Optimum Dimension Point Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = frameScPoints)
         ChangeColODim <- function() {
             MGvar$screeplot.Ocol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8505,19 +8505,19 @@ function ()
             background = "white")
         tkplace(frameScLines, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ScreeLines)
-        tkplace(tk2label(frameScLines, text = "Display Scree Curve", 
+        tkplace(tklabel(frameScLines, text = "Display Scree Curve", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameScLines)
         Scree.Curve.CB <- tk2checkbutton(ScPlotOpsNB)
         tkconfigure(Scree.Curve.CB, variable = MGvar$Scree.Curve.val)
         tkplace(Scree.Curve.CB, relx = 0.7, rely = 0.1, `in` = frameScLines)
-        tkplace(tk2label(frameScLines, text = "Scree Curve Type", 
+        tkplace(tklabel(frameScLines, text = "Scree Curve Type", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameScLines)
         Scree.LineT.ComboBox <- tkwidget(ScPlotOps, "ComboBox", 
             editable = FALSE, values = c("Solid Line", "Dashed", 
                 "Dotted"), width = 12, textvariable = MGvar$Scree.LineT.val)
         tkplace(Scree.LineT.ComboBox, relx = 0.6, rely = 0.25, 
             `in` = frameScLines)
-        tkplace(tk2label(frameScLines, text = "Scree Curve Colour", 
+        tkplace(tklabel(frameScLines, text = "Scree Curve Colour", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameScLines)
         ChangeColLine <- function() {
             MGvar$screeplot.curvecol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8529,12 +8529,12 @@ function ()
         ScreeColCurve <- tkbutton(ScPlotOps, text = "", width = 2, 
             height = 1, bg = MGvar$screeplot.curvecol, command = function() ChangeColLine())
         tkplace(ScreeColCurve, relx = 0.7, rely = 0.4, `in` = frameScLines)
-        tkplace(tk2label(frameScLines, text = "Display Current Dimension Line", 
+        tkplace(tklabel(frameScLines, text = "Display Current Dimension Line", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = frameScLines)
         Scree.CLine.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.CLine.CB, variable = MGvar$Scree.CLine.val)
         tkplace(Scree.CLine.CB, relx = 0.7, rely = 0.55, `in` = frameScLines)
-        tkplace(tk2label(frameScLines, text = "Display Optimum Dimension Line", 
+        tkplace(tklabel(frameScLines, text = "Display Optimum Dimension Line", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = frameScLines)
         Scree.OLine.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.OLine.CB, variable = MGvar$Scree.OLine.val)
@@ -8592,12 +8592,12 @@ function ()
             background = "white")
         tkplace(frameScAxes, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ScreeAxes)
-        tkplace(tk2label(frameScAxes, text = "Display Axes Measures", 
+        tkplace(tklabel(frameScAxes, text = "Display Axes Measures", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameScAxes)
         Scree.Axes.CB <- tk2checkbutton(ScPlotOps)
         tkconfigure(Scree.Axes.CB, variable = MGvar$Scree.Axes.val)
         tkplace(Scree.Axes.CB, relx = 0.7, rely = 0.1, `in` = frameScAxes)
-        tkplace(tk2label(frameScAxes, text = "Axes Colour", background = "white"), 
+        tkplace(tklabel(frameScAxes, text = "Axes Colour", background = "white"), 
             relx = 0.1, rely = 0.25, `in` = frameScAxes)
         ChangeAxescol <- function() {
             MGvar$screeplot.Axescol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8747,32 +8747,32 @@ function ()
             background = "white")
         tkplace(frameZGen, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheigh = 0.96, `in` = ZoomGen)
-        tkplace(tk2label(frameZGen, text = "Display Main Title", 
+        tkplace(tklabel(frameZGen, text = "Display Main Title", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameZGen)
         Zoom.Main.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.Main.CB, variable = MGvar$Zoom.Main.val)
         tkplace(Zoom.Main.CB, relx = 0.7, rely = 0.1, `in` = frameZGen)
-        tkplace(tk2label(frameZGen, text = "Display Distance Measure", 
+        tkplace(tklabel(frameZGen, text = "Display Distance Measure", 
             background = "white"), relx = 0.1, rely = 0.22, `in` = frameZGen)
         Zoom.Dist.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.Dist.CB, variable = MGvar$Zoom.Dist.val)
         tkplace(Zoom.Dist.CB, relx = 0.7, rely = 0.22, `in` = frameZGen)
-        tkplace(tk2label(frameZGen, text = "Display Legend", 
-            background = "white"), relx = 0.1, rely = 0.34, `in` = frameZGen)
+        tkplace(tklabel(frameZGen, text = "Display Legend", background = "white"), 
+            relx = 0.1, rely = 0.34, `in` = frameZGen)
         Zoom.Leg.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.Leg.CB, variable = MGvar$Zoom.Leg.val)
         tkplace(Zoom.Leg.CB, relx = 0.7, rely = 0.34, `in` = frameZGen)
-        tkplace(tk2label(frameZGen, text = "Provide Label for Y-Axis", 
+        tkplace(tklabel(frameZGen, text = "Provide Label for Y-Axis", 
             background = "white"), relx = 0.1, rely = 0.46, `in` = frameZGen)
         Zoom.Ylab.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.Ylab.CB, variable = MGvar$Zoom.Ylab.val)
         tkplace(Zoom.Ylab.CB, relx = 0.7, rely = 0.46, `in` = frameZGen)
-        tkplace(tk2label(frameZGen, text = "Provide Label for X-Axis", 
+        tkplace(tklabel(frameZGen, text = "Provide Label for X-Axis", 
             background = "white"), relx = 0.1, rely = 0.58, `in` = frameZGen)
         Zoom.Xlab.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.Xlab.CB, variable = MGvar$Zoom.Xlab.val)
         tkplace(Zoom.Xlab.CB, relx = 0.7, rely = 0.58, `in` = frameZGen)
-        tkplace(tk2label(frameZGen, text = "Background Colour", 
+        tkplace(tklabel(frameZGen, text = "Background Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = frameZGen)
         ChangeZColBG <- function() {
             MGvar$zoomedplot.bg.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8827,7 +8827,7 @@ function ()
                   background = "white")
                 tkplace(frameCY, relx = 0.01, relwidth = 0.98, 
                   rely = 0.01, relheight = 0.98, `in` = CYlabtt)
-                tkplace(tk2label(frameCY, text = "Enter your Label for Y-Axis", 
+                tkplace(tklabel(frameCY, text = "Enter your Label for Y-Axis", 
                   background = "white"), relx = 0.05, rely = 0.25, 
                   `in` = frameCY)
                 YInput = tclVar("")
@@ -8862,7 +8862,7 @@ function ()
                   background = "white")
                 tkplace(frameCX, relx = 0.01, relwidth = 0.98, 
                   rely = 0.01, relheight = 0.98, `in` = CXlabtt)
-                tkplace(tk2label(frameCX, text = "Enter your Label for X-Axis", 
+                tkplace(tklabel(frameCX, text = "Enter your Label for X-Axis", 
                   background = "white"), relx = 0.05, rely = 0.25, 
                   `in` = frameCX)
                 XInput = tclVar("")
@@ -8896,24 +8896,24 @@ function ()
             background = "white")
         tkplace(frameZPoints, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ZoomPoints)
-        tkplace(tk2label(frameZPoints, text = "Display Points", 
+        tkplace(tklabel(frameZPoints, text = "Display Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameZPoints)
         Zoom.Points.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.Points.CB, variable = MGvar$Zoom.Points.val)
         tkplace(Zoom.Points.CB, relx = 0.7, rely = 0.1, `in` = frameZPoints)
-        tkplace(tk2label(frameZPoints, text = "Display Point Labels", 
+        tkplace(tklabel(frameZPoints, text = "Display Point Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameZPoints)
         Zoom.Labels.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.Labels.CB, variable = MGvar$Zoom.Labels.val)
         tkplace(Zoom.Labels.CB, relx = 0.7, rely = 0.25, `in` = frameZPoints)
-        tkplace(tk2label(frameZPoints, text = "Point Size", background = "white"), 
+        tkplace(tklabel(frameZPoints, text = "Point Size", background = "white"), 
             relx = 0.1, rely = 0.4, `in` = frameZPoints)
         Zoom.PS.var <- tclVar(MGvar$zoomedplot.cex)
         Zoom.PS.spin <- tk2spinbox(ZPlotOps, from = 0.1, to = 2, 
             increment = 0.1, width = 12)
         tkconfigure(Zoom.PS.spin, textvariable = Zoom.PS.var)
         tkplace(Zoom.PS.spin, relx = 0.6, rely = 0.4, `in` = frameZPoints)
-        tkplace(tk2label(frameZPoints, text = "Point Type", background = "white"), 
+        tkplace(tklabel(frameZPoints, text = "Point Type", background = "white"), 
             relx = 0.1, rely = 0.55, `in` = frameZPoints)
         shapes <- c("Empty Boxes", "Filled Boxes", "Crosses", 
             "Empty Triangles", "Filled Triangles", "Filled Circles", 
@@ -8921,7 +8921,7 @@ function ()
         Zoom.PT.ComboBox <- tkwidget(ZPlotOps, "ComboBox", editable = FALSE, 
             values = shapes, width = 12, textvariable = MGvar$Zoom.PT.var)
         tkplace(Zoom.PT.ComboBox, relx = 0.6, rely = 0.55, `in` = frameZPoints)
-        tkplace(tk2label(frameZPoints, text = "Point Colour", 
+        tkplace(tklabel(frameZPoints, text = "Point Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = frameZPoints)
         ChangeZColPoints <- function() {
             MGvar$zoomedplot.pointcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -8998,12 +8998,12 @@ function ()
             background = "white")
         tkplace(frameZLines, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ZoomLines)
-        tkplace(tk2label(frameZLines, text = "Display Regression Axes", 
+        tkplace(tklabel(frameZLines, text = "Display Regression Axes", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameZLines)
         Zoom.RegLine.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.RegLine.CB, variable = MGvar$Zoom.RegLine.val)
         tkplace(Zoom.RegLine.CB, relx = 0.7, rely = 0.1, `in` = frameZLines)
-        tkplace(tk2label(frameZLines, text = "Regression Axes Colour", 
+        tkplace(tklabel(frameZLines, text = "Regression Axes Colour", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameZLines)
         ZoomChangeColReg <- function() {
             MGvar$zoomedplot.regcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9042,12 +9042,12 @@ function ()
             background = "white")
         tkplace(frameZAxes, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ZoomAxes)
-        tkplace(tk2label(frameZAxes, text = "Display Axes Measures", 
+        tkplace(tklabel(frameZAxes, text = "Display Axes Measures", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameZAxes)
         Zoom.AxesMeas.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.AxesMeas.CB, variable = MGvar$Zoom.AxesMeas.val)
         tkplace(Zoom.AxesMeas.CB, relx = 0.7, rely = 0.1, `in` = frameZAxes)
-        tkplace(tk2label(frameZAxes, text = "Axes Colour", background = "white"), 
+        tkplace(tklabel(frameZAxes, text = "Axes Colour", background = "white"), 
             relx = 0.1, rely = 0.25, `in` = frameZAxes)
         ChangeZColAxes <- function() {
             MGvar$zoomedplot.axescol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9059,7 +9059,7 @@ function ()
         ZoomColAxes <- tkbutton(ZPlotOps, text = "", width = 2, 
             height = 1, bg = MGvar$zoomedplot.axescol, command = function() ChangeZColAxes())
         tkplace(ZoomColAxes, relx = 0.7, rely = 0.25, `in` = frameZAxes)
-        tkplace(tk2label(frameZAxes, text = "Display Amount Zoomed", 
+        tkplace(tklabel(frameZAxes, text = "Display Amount Zoomed", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameZAxes)
         Zoom.ShowZoom.CB <- tk2checkbutton(ZPlotOps)
         tkconfigure(Zoom.ShowZoom.CB, variable = MGvar$Zoom.ShowZoom.val)
@@ -9167,27 +9167,27 @@ function ()
             background = "white")
         tkplace(framePGen, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ProcGen)
-        tkplace(tk2label(framePGen, text = "Display Main Title", 
+        tkplace(tklabel(framePGen, text = "Display Main Title", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framePGen)
         Proc.Main.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Main.CB, variable = MGvar$Proc.Main.val)
         tkplace(Proc.Main.CB, relx = 0.7, rely = 0.1, `in` = framePGen)
-        tkplace(tk2label(framePGen, text = "Display Plot Legend", 
+        tkplace(tklabel(framePGen, text = "Display Plot Legend", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = framePGen)
         Proc.Leg.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Leg.CB, variable = MGvar$Proc.Leg.val)
         tkplace(Proc.Leg.CB, relx = 0.7, rely = 0.25, `in` = framePGen)
-        tkplace(tk2label(framePGen, text = "Provide Label for Y-Axis", 
+        tkplace(tklabel(framePGen, text = "Provide Label for Y-Axis", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = framePGen)
         Proc.Ylab.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Ylab.CB, variable = MGvar$Proc.Ylab.val)
         tkplace(Proc.Ylab.CB, relx = 0.7, rely = 0.4, `in` = framePGen)
-        tkplace(tk2label(framePGen, text = "Provide Label for X-Axis", 
+        tkplace(tklabel(framePGen, text = "Provide Label for X-Axis", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = framePGen)
         Proc.Xlab.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Xlab.CB, variable = MGvar$Proc.Xlab.val)
         tkplace(Proc.Xlab.CB, relx = 0.7, rely = 0.55, `in` = framePGen)
-        tkplace(tk2label(framePGen, text = "Background Colour", 
+        tkplace(tklabel(framePGen, text = "Background Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = framePGen)
         ChangeProcColBG <- function() {
             MGvar$procplot.bg.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9237,7 +9237,7 @@ function ()
                   background = "white")
                 tkplace(framePY, relx = 0.01, relwidth = 0.98, 
                   rely = 0.01, relheight = 0.98, `in` = PYlabtt)
-                tkplace(tk2label(framePY, text = "Enter your Label for Y-Axis", 
+                tkplace(tklabel(framePY, text = "Enter your Label for Y-Axis", 
                   background = "white"), relx = 0.05, rely = 0.25, 
                   `in` = framePY)
                 YInput = tclVar("")
@@ -9273,7 +9273,7 @@ function ()
                   background = "white")
                 tkplace(framePX, relx = 0.01, relwidth = 0.98, 
                   rely = 0.01, relheight = 0.98, `in` = PXlabtt)
-                tkplace(tk2label(framePX, text = "Enter your Label for X-Axis", 
+                tkplace(tklabel(framePX, text = "Enter your Label for X-Axis", 
                   background = "white"), relx = 0.05, rely = 0.25, 
                   `in` = framePX)
                 XInput = tclVar("")
@@ -9305,32 +9305,32 @@ function ()
             text = "Procrustes Plot Points", background = "white")
         tkplace(framePPoints1, relx = 0.02, relwidth = 0.96, 
             rely = 0.02, relheight = 0.96, `in` = ProcPoints1)
-        tkplace(tk2label(framePPoints1, text = "Display Points", 
+        tkplace(tklabel(framePPoints1, text = "Display Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framePPoints1)
         Proc.Points1.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Points1.CB, variable = MGvar$Proc.Points1.val)
         tkplace(Proc.Points1.CB, relx = 0.7, rely = 0.1, `in` = framePPoints1)
-        tkplace(tk2label(framePPoints1, text = "Display Point Labels", 
+        tkplace(tklabel(framePPoints1, text = "Display Point Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = framePPoints1)
         Proc.Labels1.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Labels1.CB, variable = MGvar$Proc.Labels1.val)
         tkplace(Proc.Labels1.CB, relx = 0.7, rely = 0.25, `in` = framePPoints1)
-        tkplace(tk2label(framePPoints1, text = "Point Size", 
-            background = "white"), relx = 0.1, rely = 0.4, `in` = framePPoints1)
+        tkplace(tklabel(framePPoints1, text = "Point Size", background = "white"), 
+            relx = 0.1, rely = 0.4, `in` = framePPoints1)
         Proc.PS1.val <- tclVar(MGvar$procplot.cex1)
         Proc.PS1.spin <- tk2spinbox(PPlotOps, from = 0.1, to = 2, 
             increment = 0.1, width = 12)
         tkconfigure(Proc.PS1.spin, textvariable = Proc.PS1.val)
         tkplace(Proc.PS1.spin, relx = 0.6, rely = 0.4, `in` = framePPoints1)
-        tkplace(tk2label(framePPoints1, text = "Point Type", 
-            background = "white"), relx = 0.1, rely = 0.55, `in` = framePPoints1)
+        tkplace(tklabel(framePPoints1, text = "Point Type", background = "white"), 
+            relx = 0.1, rely = 0.55, `in` = framePPoints1)
         shapes <- c("Empty Boxes", "Filled Boxes", "Crosses", 
             "Empty Triangles", "Filled Triangles", "Filled Circles", 
             "Empty Circles")
         Proc.PT1.ComboBox <- tkwidget(PPlotOps, "ComboBox", editable = FALSE, 
             values = shapes, width = 12, textvariable = MGvar$Proc.PT1.val)
         tkplace(Proc.PT1.ComboBox, relx = 0.6, rely = 0.55, `in` = framePPoints1)
-        tkplace(tk2label(framePPoints1, text = "Point Colour", 
+        tkplace(tklabel(framePPoints1, text = "Point Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = framePPoints1)
         ChangeProcCol1Points <- function() {
             MGvar$procplot.point1col.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9407,32 +9407,32 @@ function ()
             text = "Procrustes Plot Points", background = "white")
         tkplace(framePPoints2, relx = 0.02, relwidth = 0.96, 
             rely = 0.02, relheight = 0.96, `in` = ProcPoints2)
-        tkplace(tk2label(framePPoints2, text = "Display Points", 
+        tkplace(tklabel(framePPoints2, text = "Display Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framePPoints2)
         Proc.Points2.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Points2.CB, variable = MGvar$Proc.Points2.val)
         tkplace(Proc.Points2.CB, relx = 0.7, rely = 0.1, `in` = framePPoints2)
-        tkplace(tk2label(framePPoints2, text = "Display Point Labels", 
+        tkplace(tklabel(framePPoints2, text = "Display Point Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = framePPoints2)
         Proc.Labels2.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.Labels2.CB, variable = MGvar$Proc.Labels2.val)
         tkplace(Proc.Labels2.CB, relx = 0.7, rely = 0.25, `in` = framePPoints2)
-        tkplace(tk2label(framePPoints2, text = "Point Size", 
-            background = "white"), relx = 0.1, rely = 0.4, `in` = framePPoints2)
+        tkplace(tklabel(framePPoints2, text = "Point Size", background = "white"), 
+            relx = 0.1, rely = 0.4, `in` = framePPoints2)
         Proc.PS2.val <- tclVar(MGvar$procplot.cex2)
         Proc.PS2.spin <- tk2spinbox(PPlotOps, from = 0.1, to = 2, 
             increment = 0.1, width = 12)
         tkconfigure(Proc.PS2.spin, textvariable = Proc.PS2.val)
         tkplace(Proc.PS2.spin, relx = 0.6, rely = 0.4, `in` = framePPoints2)
-        tkplace(tk2label(framePPoints2, text = "Point Type", 
-            background = "white"), relx = 0.1, rely = 0.55, `in` = framePPoints2)
+        tkplace(tklabel(framePPoints2, text = "Point Type", background = "white"), 
+            relx = 0.1, rely = 0.55, `in` = framePPoints2)
         shapes <- c("Empty Boxes", "Filled Boxes", "Crosses", 
             "Empty Triangles", "Filled Triangles", "Filled Circles", 
             "Empty Circles")
         Proc.PT2.ComboBox <- tkwidget(PPlotOps, "ComboBox", editable = FALSE, 
             values = shapes, width = 12, textvariable = MGvar$Proc.PT2.val)
         tkplace(Proc.PT2.ComboBox, relx = 0.6, rely = 0.55, `in` = framePPoints2)
-        tkplace(tk2label(framePPoints2, text = "Point Colour", 
+        tkplace(tklabel(framePPoints2, text = "Point Colour", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = framePPoints2)
         ChangeProcCol2Points <- function() {
             MGvar$procplot.point2col.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9509,12 +9509,12 @@ function ()
             background = "white")
         tkplace(framePLines, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ProcLines)
-        tkplace(tk2label(framePLines, text = "Display Points 1 Regression Axes", 
+        tkplace(tklabel(framePLines, text = "Display Points 1 Regression Axes", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framePLines)
         Proc.RegLine1.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.RegLine1.CB, variable = MGvar$Proc.RegLine1.val)
         tkplace(Proc.RegLine1.CB, relx = 0.7, rely = 0.1, `in` = framePLines)
-        tkplace(tk2label(framePLines, text = "Regression 1 Axes Colour", 
+        tkplace(tklabel(framePLines, text = "Regression 1 Axes Colour", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = framePLines)
         ChangeColPReg1 <- function() {
             MGvar$procplot.regcol1.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9526,12 +9526,12 @@ function ()
         ProcColReg1 <- tkbutton(PPlotOps, text = "", width = 2, 
             height = 1, bg = MGvar$procplot.regcol1, command = function() ChangeColPReg1())
         tkplace(ProcColReg1, relx = 0.7, rely = 0.25, `in` = framePLines)
-        tkplace(tk2label(framePLines, text = "Display Points 2 Regression Axes", 
+        tkplace(tklabel(framePLines, text = "Display Points 2 Regression Axes", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = framePLines)
         Proc.RegLine2.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.RegLine2.CB, variable = MGvar$Proc.RegLine2.val)
         tkplace(Proc.RegLine2.CB, relx = 0.7, rely = 0.4, `in` = framePLines)
-        tkplace(tk2label(framePLines, text = "Regression 2 Axes Colour", 
+        tkplace(tklabel(framePLines, text = "Regression 2 Axes Colour", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = framePLines)
         ChangeColPReg2 <- function() {
             MGvar$procplot.regcol2.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9578,12 +9578,12 @@ function ()
             background = "white")
         tkplace(framePAxes, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = ProcAxes)
-        tkplace(tk2label(framePAxes, text = "Display Axes Measures", 
+        tkplace(tklabel(framePAxes, text = "Display Axes Measures", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framePAxes)
         Proc.AxesMeas.CB <- tk2checkbutton(PPlotOps)
         tkconfigure(Proc.AxesMeas.CB, variable = MGvar$Proc.AxesMeas.val)
         tkplace(Proc.AxesMeas.CB, relx = 0.7, rely = 0.1, `in` = framePAxes)
-        tkplace(tk2label(framePAxes, text = "Axes Colour", background = "white"), 
+        tkplace(tklabel(framePAxes, text = "Axes Colour", background = "white"), 
             relx = 0.1, rely = 0.25, `in` = framePAxes)
         ChangeColPAxes <- function() {
             MGvar$procplot.axescol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9785,24 +9785,24 @@ function ()
             text = "Static 3D Configuration Points", background = "white")
         tkplace(framestatpoints, relx = 0.01, rely = 0.01, relwidth = 0.98, 
             relheight = 0.98, `in` = Stat3DPoints)
-        tkplace(tk2label(framestatpoints, text = "Display Points", 
+        tkplace(tklabel(framestatpoints, text = "Display Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framestatpoints)
         Stat.Points.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(Stat.Points.CB, variable = MGvar$Stat.Points.val)
         tkplace(Stat.Points.CB, relx = 0.75, rely = 0.1, `in` = framestatpoints)
-        tkplace(tk2label(framestatpoints, text = "Display Point Labels", 
+        tkplace(tklabel(framestatpoints, text = "Display Point Labels", 
             background = "white"), relx = 0.1, rely = 0.22, `in` = framestatpoints)
         Stat.Labels.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(Stat.Labels.CB, variable = MGvar$Stat.Labels.val)
         tkplace(Stat.Labels.CB, relx = 0.75, rely = 0.22, `in` = framestatpoints)
-        tkplace(tk2label(framestatpoints, text = "Display Point Size", 
+        tkplace(tklabel(framestatpoints, text = "Display Point Size", 
             background = "white"), relx = 0.1, rely = 0.34, `in` = framestatpoints)
         Stat.PS.var <- tclVar(MGvar$sthreeDplot.cex)
         Stat.PS.spin <- tk2spinbox(TDPlotOps, from = 0.1, to = 2, 
             increment = 0.1, width = 15)
         tkconfigure(Stat.PS.spin, textvariable = Stat.PS.var)
         tkplace(Stat.PS.spin, relx = 0.65, rely = 0.34, `in` = framestatpoints)
-        tkplace(tk2label(framestatpoints, text = "Point Type", 
+        tkplace(tklabel(framestatpoints, text = "Point Type", 
             background = "white"), relx = 0.1, rely = 0.46, `in` = framestatpoints)
         shapes <- c("Empty Boxes", "Filled Boxes", "Crosses", 
             "Empty Triangles", "Filled Triangles", "Filled Circles", 
@@ -9810,7 +9810,7 @@ function ()
         Stat.PT.ComboBox <- tkwidget(TDPlotOps, "ComboBox", editable = FALSE, 
             values = shapes, width = 12, textvariable = MGvar$Stat.PT.var)
         tkplace(Stat.PT.ComboBox, relx = 0.65, rely = 0.46, `in` = framestatpoints)
-        tkplace(tk2label(framestatpoints, text = "Point Colour", 
+        tkplace(tklabel(framestatpoints, text = "Point Colour", 
             background = "white"), relx = 0.1, rely = 0.58, `in` = framestatpoints)
         ChangeStatColPoints <- function() {
             MGvar$sthreeDplot.pointcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9822,7 +9822,7 @@ function ()
         StatColPoints <- tkbutton(TDPlotOps, text = "", width = 2, 
             height = 1, bg = MGvar$sthreeDplot.pointcol, command = function() ChangeStatColPoints())
         tkplace(StatColPoints, relx = 0.75, rely = 0.58, `in` = framestatpoints)
-        tkplace(tk2label(framestatpoints, text = "Highlight 3D element", 
+        tkplace(tklabel(framestatpoints, text = "Highlight 3D element", 
             background = "white"), relx = 0.1, rely = 0.7, `in` = framestatpoints)
         Stat.HL.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(Stat.HL.CB, variable = MGvar$Stat.HL.var)
@@ -9898,12 +9898,12 @@ function ()
             text = "Static 3D Configuration Lines", background = "white")
         tkplace(framestatlines, relx = 0.01, rely = 0.01, relwidth = 0.98, 
             relheight = 0.98, `in` = Stat3DLines)
-        tkplace(tk2label(framestatlines, text = "Display Regression on X Plane", 
+        tkplace(tklabel(framestatlines, text = "Display Regression on X Plane", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framestatlines)
         Stat.RegLine.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(Stat.RegLine.CB, variable = MGvar$Stat.RegLine.val)
         tkplace(Stat.RegLine.CB, relx = 0.75, rely = 0.1, `in` = framestatlines)
-        tkplace(tk2label(framestatlines, text = "Regression X Plane Colour", 
+        tkplace(tklabel(framestatlines, text = "Regression X Plane Colour", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = framestatlines)
         ChangeStatColReg <- function() {
             MGvar$sthreeDplot.regXcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9937,12 +9937,12 @@ function ()
             background = "white")
         tkplace(framestataxes, relx = 0.01, rely = 0.01, relwidth = 0.98, 
             relheight = 0.98, `in` = Stat3DAxes)
-        tkplace(tk2label(framestataxes, text = "Display Axes", 
+        tkplace(tklabel(framestataxes, text = "Display Axes", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = framestataxes)
         Stat.AxesMeas.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(Stat.AxesMeas.CB, variable = MGvar$Stat.AxesMeas.val)
         tkplace(Stat.AxesMeas.CB, relx = 0.75, rely = 0.1, `in` = framestataxes)
-        tkplace(tk2label(framestataxes, text = "Axes Colour", 
+        tkplace(tklabel(framestataxes, text = "Axes Colour", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = framestataxes)
         ChangeStatColAxes <- function() {
             MGvar$sthreeDplot.axescol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -9954,7 +9954,7 @@ function ()
         StatColAxes <- tkbutton(TDPlotOps, text = "", width = 2, 
             height = 1, bg = MGvar$sthreeDplot.axescol, command = function() ChangeStatColAxes())
         tkplace(StatColAxes, relx = 0.75, rely = 0.25, `in` = framestataxes)
-        tkplace(tk2label(framestataxes, text = "Display Grid", 
+        tkplace(tklabel(framestataxes, text = "Display Grid", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = framestataxes)
         Stat.Grid.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(Stat.Grid.CB, variable = MGvar$Stat.Grid.val)
@@ -10035,24 +10035,24 @@ function ()
             text = "RGL 3D Configuration Points", background = "white")
         tkplace(frameRGLpoints, relx = 0.01, rely = 0.01, relwidth = 0.98, 
             relheight = 0.98, `in` = RGL3DPoints)
-        tkplace(tk2label(frameRGLpoints, text = "Display Points", 
+        tkplace(tklabel(frameRGLpoints, text = "Display Points", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameRGLpoints)
         RGL.points.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(RGL.points.CB, variable = MGvar$RGL.points.val)
         tkplace(RGL.points.CB, relx = 0.75, rely = 0.1, `in` = frameRGLpoints)
-        tkplace(tk2label(frameRGLpoints, text = "Display Points Labels", 
+        tkplace(tklabel(frameRGLpoints, text = "Display Points Labels", 
             background = "white"), relx = 0.1, rely = 0.25, `in` = frameRGLpoints)
         RGL.ptlabels.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(RGL.ptlabels.CB, variable = MGvar$RGL.ptlabels.val)
         tkplace(RGL.ptlabels.CB, relx = 0.75, rely = 0.25, `in` = frameRGLpoints)
-        tkplace(tk2label(frameRGLpoints, text = "Point Size", 
+        tkplace(tklabel(frameRGLpoints, text = "Point Size", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameRGLpoints)
         RGL.PS.var <- tclVar(MGvar$rglplot.ptsize)
         RGL.PS.spin <- tk2spinbox(TDPlotOps, from = 0, to = 4, 
             increment = 0.5, width = 15)
         tkconfigure(RGL.PS.spin, textvariable = RGL.PS.var)
         tkplace(RGL.PS.spin, relx = 0.65, rely = 0.4, `in` = frameRGLpoints)
-        tkplace(tk2label(frameRGLpoints, text = "Point Colour", 
+        tkplace(tklabel(frameRGLpoints, text = "Point Colour", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = frameRGLpoints)
         ChangeRGLptCol <- function() {
             MGvar$rglplot.ptcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -10096,7 +10096,7 @@ function ()
             background = "white")
         tkplace(frameRGLaxes, relx = 0.01, rely = 0.01, relwidth = 0.98, 
             relheight = 0.98, `in` = RGL3DAxes)
-        tkplace(tk2label(frameRGLaxes, text = "Display Axes Measures", 
+        tkplace(tklabel(frameRGLaxes, text = "Display Axes Measures", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameRGLaxes)
         RGL.AxesMeas.CB <- tk2checkbutton(TDPlotOps)
         tkconfigure(RGL.AxesMeas.CB, variable = MGvar$RGL.AxesMeas.val)
@@ -10164,9 +10164,9 @@ function ()
         tkplace(frameAD.T, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.38, `in` = MGvar$activedata)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(frameAD.T, text = "All procedures in this package require that the active data have\nobjects as rows and variables as columns. If your data is not in\nthis format then please transpose.", 
+        tkplace(tklabel(frameAD.T, text = "All procedures in this package require that the active data have\nobjects as rows and variables as columns. If your data is not in\nthis format then please transpose.", 
             font = fontsmall), relx = 0.08, rely = 0.15, `in` = frameAD.T)
-        tkplace(tk2label(frameAD.T, text = "Transpose Active Data?", 
+        tkplace(tklabel(frameAD.T, text = "Transpose Active Data?", 
             background = "white"), relx = 0.15, rely = 0.56, 
             `in` = frameAD.T)
         cbtrans <- tkcheckbutton(DataOps)
@@ -10200,10 +10200,10 @@ function ()
             relheight = 0.3, `in` = MGvar$activedata)
         tclvalue(MGvar$datnam) <- paste("Current name of active data is:               ", 
             MGvar$datatitle)
-        tkplace(tk2label(frameAD.Name, text = tclvalue(MGvar$datnam), 
+        tkplace(tklabel(frameAD.Name, text = tclvalue(MGvar$datnam), 
             textvariable = MGvar$datnam, background = "white"), 
             relx = 0.1, rely = 0.2, `in` = frameAD.Name)
-        tkplace(tk2label(frameAD.Name, text = "Enter new name of Dataset", 
+        tkplace(tklabel(frameAD.Name, text = "Enter new name of Dataset", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameAD.Name)
         ChangingName = tclVar("")
         NewNameBox = tkentry(DataOps, width = 15, textvariable = ChangingName)
@@ -10230,9 +10230,9 @@ function ()
             text = "Scale Data", background = "white")
         tkplace(frameAD.Scale, relx = 0.02, relwidth = 0.96, 
             rely = 0.72, relheight = 0.27, `in` = MGvar$activedata)
-        tkplace(tk2label(frameAD.Scale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
+        tkplace(tklabel(frameAD.Scale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
             font = fontsmall), relx = 0.07, rely = 0.15, `in` = frameAD.Scale)
-        tkplace(tk2label(frameAD.Scale, text = "Scale your active data?", 
+        tkplace(tklabel(frameAD.Scale, text = "Scale your active data?", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = frameAD.Scale)
         ScDat.val <- tclVar(0)
         ScDat.CB <- tk2checkbutton(DataOps)
@@ -10277,7 +10277,7 @@ function ()
             background = "white")
         tkplace(frameApp, relx = 0.01, rely = 0.01, relwidth = 0.98, 
             relheight = 0.98, `in` = Appearance)
-        tkplace(tk2label(frameApp, text = "Change Primary Background Colour", 
+        tkplace(tklabel(frameApp, text = "Change Primary Background Colour", 
             background = "white"), relx = 0.05, rely = 0.15, 
             `in` = frameApp)
         ChangeColPrim <- function() {
@@ -10289,7 +10289,7 @@ function ()
         ColPrim <- tkbutton(Appearance, text = "", width = 2, 
             height = 1, bg = col.prim, command = function() ChangeColPrim())
         tkplace(ColPrim, relx = 0.85, rely = 0.15, `in` = frameApp)
-        tkplace(tk2label(frameApp, text = "Change Secondary Background Colour", 
+        tkplace(tklabel(frameApp, text = "Change Secondary Background Colour", 
             background = "white"), relx = 0.05, rely = 0.45, 
             `in` = frameApp)
         ChangeColSec <- function() {
@@ -10681,7 +10681,7 @@ function ()
             background = "white")
         tkplace(frameZ1, relx = 0.05, rely = 0.01, relwidth = 0.9, 
             relheight = 0.2, `in` = Zoomtt)
-        tkplace(tk2label(frameZ1, text = "Zoom Ratio", background = "white"), 
+        tkplace(tklabel(frameZ1, text = "Zoom Ratio", background = "white"), 
             relx = 0.04, rely = 0.4, `in` = frameZ1)
         MGvar$Zoom.Rat.var <<- tclVar("1")
         Zoom.Rat.spin <- tk2spinbox(Zoomtt, from = 1, to = 20, 
@@ -10693,19 +10693,19 @@ function ()
             background = "white")
         tkplace(frameZ2, relx = 0.05, rely = 0.23, relwidth = 0.9, 
             relheight = 0.3, `in` = Zoomtt)
-        tkplace(tk2label(frameZ2, text = "Focal Point:", background = "white"), 
+        tkplace(tklabel(frameZ2, text = "Focal Point:", background = "white"), 
             relx = 0.04, rely = 0.2, `in` = frameZ2)
-        tkplace(tk2label(frameZ2, text = "Centre", background = "white"), 
+        tkplace(tklabel(frameZ2, text = "Centre", background = "white"), 
             relx = 0.35, rely = 0.2, `in` = frameZ2)
         rb.centre <- tk2radiobutton(Zoomtt)
         tkconfigure(rb.centre, variable = ZrbValue, value = "Centre")
         tkplace(rb.centre, relx = 0.9, rely = 0.2, `in` = frameZ2)
-        tkplace(tk2label(frameZ2, text = "Cursor Location", background = "white"), 
+        tkplace(tklabel(frameZ2, text = "Cursor Location", background = "white"), 
             relx = 0.35, rely = 0.45, `in` = frameZ2)
         rb.loc <- tk2radiobutton(Zoomtt)
         tkconfigure(rb.loc, variable = ZrbValue, value = "Location")
         tkplace(rb.loc, relx = 0.9, rely = 0.45, `in` = frameZ2)
-        tkplace(tk2label(frameZ2, text = "Point Name", background = "white"), 
+        tkplace(tklabel(frameZ2, text = "Point Name", background = "white"), 
             relx = 0.35, rely = 0.7, `in` = frameZ2)
         objnames = rownames(MGvar$activedata)
         PointEntry = tclVar(objnames[1])
@@ -10719,22 +10719,22 @@ function ()
             background = "white")
         tkplace(frameZ3, relx = 0.05, rely = 0.55, relwidth = 0.9, 
             relheight = 0.3, `in` = Zoomtt)
-        tkplace(tk2label(frameZ3, text = "Output Location:", 
-            background = "white"), relx = 0.04, rely = 0.2, `in` = frameZ3)
-        tkplace(tk2label(frameZ3, text = "Replace Active Plot", 
+        tkplace(tklabel(frameZ3, text = "Output Location:", background = "white"), 
+            relx = 0.04, rely = 0.2, `in` = frameZ3)
+        tkplace(tklabel(frameZ3, text = "Replace Active Plot", 
             background = "white"), relx = 0.35, rely = 0.2, `in` = frameZ3)
         Zoom.AP.var <- tclVar("0")
         Zoom.AP.CB <- tk2checkbutton(Zoomtt)
         tkconfigure(Zoom.AP.CB, variable = Zoom.AP.var)
         tkplace(Zoom.AP.CB, relx = 0.85, rely = 0.2, `in` = frameZ3)
-        tkplace(tk2label(frameZ3, text = "Secondary Tabbed-Book", 
+        tkplace(tklabel(frameZ3, text = "Secondary Tabbed-Book", 
             background = "white"), relx = 0.35, rely = 0.45, 
             `in` = frameZ3)
         Zoom.SP.var <- tclVar("1")
         Zoom.SP.CB <- tk2checkbutton(Zoomtt)
         tkconfigure(Zoom.SP.CB, variable = Zoom.SP.var)
         tkplace(Zoom.SP.CB, relx = 0.85, rely = 0.45, `in` = frameZ3)
-        tkplace(tk2label(frameZ3, text = "Popped Out Window", 
+        tkplace(tklabel(frameZ3, text = "Popped Out Window", 
             background = "white"), relx = 0.35, rely = 0.7, `in` = frameZ3)
         Zoom.POW.var <- tclVar("0")
         Zoom.POW.CB <- tk2checkbutton(Zoomtt)
@@ -10785,7 +10785,7 @@ function ()
                   text = "Active Cursor Zoom", background = "white")
                 tkplace(frameOrp, relx = 0.05, rely = 0.05, relheight = 0.9, 
                   relwidth = 0.9, `in` = MGcomp$orp)
-                tkplace(tk2label(frameOrp, text = "The cursor zoom function is active, please \nleft click a point on the active plot to perform\n the zoom.", 
+                tkplace(tklabel(frameOrp, text = "The cursor zoom function is active, please \nleft click a point on the active plot to perform\n the zoom.", 
                   background = "white"), relx = 0.05, rely = 0.2, 
                   `in` = frameOrp)
                 if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
@@ -11331,20 +11331,20 @@ function ()
         tkplace(framePProc.1, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = PProc.1)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(framePProc.1, text = "Procrustes Analysis is a process by which one set of \ncoordinates is manipulated to match another as best as \npossible. This function will plot the manipulated set of\ncoordinates with the target coordinates to show their \nlevel of similiarity.", 
+        tkplace(tklabel(framePProc.1, text = "Procrustes Analysis is a process by which one set of \ncoordinates is manipulated to match another as best as \npossible. This function will plot the manipulated set of\ncoordinates with the target coordinates to show their \nlevel of similiarity.", 
             font = fontsmall), relx = 0.08, rely = 0.1, `in` = framePProc.1)
-        tkplace(tk2label(framePProc.1, text = "First Set of Coordinates", 
+        tkplace(tklabel(framePProc.1, text = "First Set of Coordinates", 
             background = "white"), relx = 0.1, rely = 0.43, `in` = framePProc.1)
-        tkplace(tk2label(framePProc.1, text = "(Coordinates to be transformed)", 
+        tkplace(tklabel(framePProc.1, text = "(Coordinates to be transformed)", 
             font = fontsmall), relx = 0.1, rely = 0.48, `in` = framePProc.1)
         PProc.C1.spin <- tk2spinbox(PProc, values = c("Plot5", 
             "Plot4", "Plot3", "Plot2", "Plot1"), width = 8)
         PProc.C1.val <- tclVar("Plot1")
         tkconfigure(PProc.C1.spin, textvariable = PProc.C1.val)
         tkplace(PProc.C1.spin, relx = 0.7, rely = 0.45, `in` = framePProc.1)
-        tkplace(tk2label(framePProc.1, text = "Second Set of Coordinates", 
+        tkplace(tklabel(framePProc.1, text = "Second Set of Coordinates", 
             background = "white"), relx = 0.1, rely = 0.63, `in` = framePProc.1)
-        tkplace(tk2label(framePProc.1, text = "(Coordinates to be matched)", 
+        tkplace(tklabel(framePProc.1, text = "(Coordinates to be matched)", 
             font = fontsmall), relx = 0.1, rely = 0.68, `in` = framePProc.1)
         PProc.C2.spin <- tk2spinbox(PProc, values = c("Plot5", 
             "Plot4", "Plot3", "Plot2", "Plot1"), width = 8)
@@ -11451,24 +11451,24 @@ function ()
         tkplace(frameGSComp, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.67, `in` = GSGen)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(frameGSComp, text = "Calculations within MDSGUI can be very time consuming \nwhen datasets become large. This computation time can be\ndecreased if various plots are ommited from the output.\nSelect below which plots you wish to be included during\nthe MDS procedure.", 
+        tkplace(tklabel(frameGSComp, text = "Calculations within MDSGUI can be very time consuming \nwhen datasets become large. This computation time can be\ndecreased if various plots are ommited from the output.\nSelect below which plots you wish to be included during\nthe MDS procedure.", 
             font = fontsmall), relx = 0.1, rely = 0.1, `in` = frameGSComp)
-        tkplace(tk2label(frameGSComp, text = "MDS Point Configuration", 
+        tkplace(tklabel(frameGSComp, text = "MDS Point Configuration", 
             background = "white"), relx = 0.1, rely = 0.45, `in` = frameGSComp)
         GS.MDSConfig.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.MDSConfig.CB, variable = MGvar$GS.MDSConfig.val)
         tkplace(GS.MDSConfig.CB, relx = 0.75, rely = 0.45, `in` = frameGSComp)
-        tkplace(tk2label(frameGSComp, text = "Shepard Plot", 
-            background = "white"), relx = 0.1, rely = 0.58, `in` = frameGSComp)
+        tkplace(tklabel(frameGSComp, text = "Shepard Plot", background = "white"), 
+            relx = 0.1, rely = 0.58, `in` = frameGSComp)
         GS.Shep.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Shep.CB, variable = MGvar$GS.Shep.val)
         tkplace(GS.Shep.CB, relx = 0.75, rely = 0.58, `in` = frameGSComp)
-        tkplace(tk2label(frameGSComp, text = "Stress Plot", background = "white"), 
+        tkplace(tklabel(frameGSComp, text = "Stress Plot", background = "white"), 
             relx = 0.1, rely = 0.71, `in` = frameGSComp)
         GS.Stress.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Stress.CB, variable = MGvar$GS.Stress.val)
         tkplace(GS.Stress.CB, relx = 0.75, rely = 0.71, `in` = frameGSComp)
-        tkplace(tk2label(frameGSComp, text = "Scree Plot", background = "white"), 
+        tkplace(tklabel(frameGSComp, text = "Scree Plot", background = "white"), 
             relx = 0.1, rely = 0.84, `in` = frameGSComp)
         GS.Scree.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Scree.CB, variable = MGvar$GS.Scree.val)
@@ -11477,9 +11477,9 @@ function ()
             background = "white")
         tkplace(frameGSWin, relx = 0.02, relwidth = 0.96, rely = 0.71, 
             relheight = 0.27, `in` = GSGen)
-        tkplace(tk2label(frameGSWin, text = "Multiple popped-out windows can be messy. Choose below\n whether or not to have multiple windows or use only one.", 
+        tkplace(tklabel(frameGSWin, text = "Multiple popped-out windows can be messy. Choose below\n whether or not to have multiple windows or use only one.", 
             font = fontsmall), relx = 0.08, rely = 0.2, `in` = frameGSWin)
-        tkplace(tk2label(frameGSWin, text = "Re-Use Popped Out Window", 
+        tkplace(tklabel(frameGSWin, text = "Re-Use Popped Out Window", 
             background = "white"), relx = 0.1, rely = 0.65, `in` = frameGSWin)
         GS.Win.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Win.CB, variable = MGvar$GS.Win.val)
@@ -11490,13 +11490,13 @@ function ()
             background = "white")
         tkplace(frameGSConMDS, relx = 0.02, relwidth = 0.96, 
             rely = 0.02, relheight = 0.96, `in` = GSCon)
-        tkplace(tk2label(frameGSConMDS, text = "MDS Relative Convergence", 
+        tkplace(tklabel(frameGSConMDS, text = "MDS Relative Convergence", 
             background = "white"), relx = 0.1, rely = 0.15, `in` = frameGSConMDS)
         GS.MDStol.val <- tclVar(MGvar$MDS.tol)
         GS.MDStol.Input = tkentry(GenSet, width = 15, textvariable = GS.MDStol.val, 
             border = 2)
         tkplace(GS.MDStol.Input, relx = 0.65, rely = 0.15, `in` = frameGSConMDS)
-        tkplace(tk2label(frameGSConMDS, text = "Maximum MDS Iterations", 
+        tkplace(tklabel(frameGSConMDS, text = "Maximum MDS Iterations", 
             background = "white"), relx = 0.1, rely = 0.3, `in` = frameGSConMDS)
         GS.MDSiter.val <- tclVar(MGvar$MDS.iter.max)
         GS.MDSiter.Input = tkentry(GenSet, width = 15, textvariable = GS.MDSiter.val, 
@@ -11508,27 +11508,27 @@ function ()
             background = "white")
         tkplace(frameGSGraph, relx = 0.02, rely = 0.02, relwidth = 0.96, 
             relheight = 0.47, `in` = GSGraph)
-        tkplace(tk2label(frameGSGraph, text = "MDS plot defaults with point labels", 
+        tkplace(tklabel(frameGSGraph, text = "MDS plot defaults with point labels", 
             background = "white"), relx = 0.1, rely = 0.1, `in` = frameGSGraph)
         GS.Lab.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Lab.CB, variable = MGvar$GS.Lab.val)
         tkplace(GS.Lab.CB, relx = 0.8, rely = 0.1, `in` = frameGSGraph)
-        tkplace(tk2label(frameGSGraph, text = "MDS plot defaults with points", 
+        tkplace(tklabel(frameGSGraph, text = "MDS plot defaults with points", 
             background = "white"), relx = 0.1, rely = 0.28, `in` = frameGSGraph)
         GS.Pt.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Pt.CB, variable = MGvar$GS.Pt.val)
         tkplace(GS.Pt.CB, relx = 0.8, rely = 0.28, `in` = frameGSGraph)
-        tkplace(tk2label(frameGSGraph, text = "MDS plot defaults with Variable Axes", 
+        tkplace(tklabel(frameGSGraph, text = "MDS plot defaults with Variable Axes", 
             background = "white"), relx = 0.1, rely = 0.46, `in` = frameGSGraph)
         GS.Reg.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Reg.CB, variable = MGvar$GS.Reg.val)
         tkplace(GS.Reg.CB, relx = 0.8, rely = 0.46, `in` = frameGSGraph)
-        tkplace(tk2label(frameGSGraph, text = "Added Shepard points clear with new plot", 
+        tkplace(tklabel(frameGSGraph, text = "Added Shepard points clear with new plot", 
             background = "white"), relx = 0.1, rely = 0.64, `in` = frameGSGraph)
         GS.ShepP.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.ShepP.CB, variable = MGvar$GS.ShepP.val)
         tkplace(GS.ShepP.CB, relx = 0.8, rely = 0.64, `in` = frameGSGraph)
-        tkplace(tk2label(frameGSGraph, text = "Individual point colours clear with new plot", 
+        tkplace(tklabel(frameGSGraph, text = "Individual point colours clear with new plot", 
             background = "white"), relx = 0.1, rely = 0.82, `in` = frameGSGraph)
         GS.Pcol.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.Pcol.CB, variable = MGvar$GS.Pcol.val)
@@ -11537,14 +11537,14 @@ function ()
             background = "white")
         tkplace(frameGSLabels, relx = 0.02, rely = 0.51, relwidth = 0.96, 
             relheight = 0.47, `in` = GSGraph)
-        tkplace(tk2label(frameGSLabels, text = "Added point labels refer to the labels manually added to the\nplot by the user. By Default these are added above the chosen\npoint and are cleared when a new plot is created.", 
+        tkplace(tklabel(frameGSLabels, text = "Added point labels refer to the labels manually added to the\nplot by the user. By Default these are added above the chosen\npoint and are cleared when a new plot is created.", 
             font = fontsmall), relx = 0.1, rely = 0.2, `in` = frameGSLabels)
-        tkplace(tk2label(frameGSLabels, text = "Clear labels index for new plots", 
+        tkplace(tklabel(frameGSLabels, text = "Clear labels index for new plots", 
             background = "white"), relx = 0.1, rely = 0.55, `in` = frameGSLabels)
         GS.IL.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.IL.CB, variable = MGvar$GS.IL.val)
         tkplace(GS.IL.CB, relx = 0.8, rely = 0.55, `in` = frameGSLabels)
-        tkplace(tk2label(frameGSLabels, text = "Added Point Label Postion", 
+        tkplace(tklabel(frameGSLabels, text = "Added Point Label Postion", 
             background = "white"), relx = 0.1, rely = 0.75, `in` = frameGSLabels)
         GS.IP.ComboBox <- tkwidget(GenSet, "ComboBox", editable = FALSE, 
             values = c("Left", "Bottom", "Right", "Top"), width = 10, 
@@ -11556,24 +11556,24 @@ function ()
             background = "white")
         tkplace(frameGSVis, relx = 0.02, rely = 0.02, relwidth = 0.96, 
             relheight = 0.96, `in` = GSVis)
-        tkplace(tk2label(frameGSVis, text = "Many of the MDS procedures in MDSGUI are iterative\nprocesses. Due to this, it is possible to view the changing\nresults throughout the iterations. This may, in some cases,\nbe time consuming so these options are adjustable.", 
+        tkplace(tklabel(frameGSVis, text = "Many of the MDS procedures in MDSGUI are iterative\nprocesses. Due to this, it is possible to view the changing\nresults throughout the iterations. This may, in some cases,\nbe time consuming so these options are adjustable.", 
             font = fontsmall), relx = 0.1, rely = 0.1, `in` = frameGSVis)
-        tkplace(tk2label(frameGSVis, text = "Update MDS configuration", 
+        tkplace(tklabel(frameGSVis, text = "Update MDS configuration", 
             background = "white"), relx = 0.1, rely = 0.3, `in` = frameGSVis)
         GS.UpConf.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.UpConf.CB, variable = MGvar$GS.UpConf.val)
         tkplace(GS.UpConf.CB, relx = 0.75, rely = 0.3, `in` = frameGSVis)
-        tkplace(tk2label(frameGSVis, text = "Update Shepard Plot", 
+        tkplace(tklabel(frameGSVis, text = "Update Shepard Plot", 
             background = "white"), relx = 0.1, rely = 0.45, `in` = frameGSVis)
         GS.UpShep.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.UpShep.CB, variable = MGvar$GS.UpShep.val)
         tkplace(GS.UpShep.CB, relx = 0.75, rely = 0.45, `in` = frameGSVis)
-        tkplace(tk2label(frameGSVis, text = "Update Stress Plot", 
+        tkplace(tklabel(frameGSVis, text = "Update Stress Plot", 
             background = "white"), relx = 0.1, rely = 0.6, `in` = frameGSVis)
         GS.UpStress.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.UpStress.CB, variable = MGvar$GS.UpStress.val)
         tkplace(GS.UpStress.CB, relx = 0.75, rely = 0.6, `in` = frameGSVis)
-        tkplace(tk2label(frameGSVis, text = "MDS Iterations Progress-Bar", 
+        tkplace(tklabel(frameGSVis, text = "MDS Iterations Progress-Bar", 
             background = "white"), relx = 0.1, rely = 0.75, `in` = frameGSVis)
         GS.UpProg.CB <- tk2checkbutton(GenSet)
         tkconfigure(GS.UpProg.CB, variable = MGvar$GS.UpProg.val)
@@ -12225,22 +12225,22 @@ function ()
         tkplace(Regframe, relx = 0.05, relwidth = 0.9, rely = 0.01, 
             relheight = 0.82, `in` = Regtt)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(Regframe, text = "Add a Regression Line to your plot relating to one of the \nvariables from your active dataset.", 
+        tkplace(tklabel(Regframe, text = "Add a Regression Line to your plot relating to one of the \nvariables from your active dataset.", 
             font = fontsmall), relx = 0.1, rely = 0.1, `in` = Regframe)
-        tkplace(tk2label(Regframe, text = "Dependent Variable", 
+        tkplace(tklabel(Regframe, text = "Dependent Variable", 
             background = "white"), relx = 0.1, rely = 0.4, `in` = Regframe)
         regvalues = colnames(MGvar$activedata)
         Reg.var.val <- tclVar(regvalues[1])
         Reg.var.ComboBox <- tkwidget(Regtt, "ComboBox", editable = FALSE, 
             values = regvalues, width = 15, textvariable = Reg.var.val)
         tkplace(Reg.var.ComboBox, relx = 0.58, rely = 0.4, `in` = Regframe)
-        tkplace(tk2label(Regframe, text = "Replace Previous Regression Line?", 
+        tkplace(tklabel(Regframe, text = "Replace Previous Regression Line?", 
             background = "white"), relx = 0.1, rely = 0.65, `in` = Regframe)
         Reg.RegRep.val <- tclVar("1")
         Reg.RegRep.CB <- tk2checkbutton(Regtt)
         tkconfigure(Reg.RegRep.CB, variable = Reg.RegRep.val)
         tkplace(Reg.RegRep.CB, relx = 0.8, rely = 0.65, `in` = Regframe)
-        tkplace(tk2label(Regframe, text = "Label Regression Line on Plot?", 
+        tkplace(tklabel(Regframe, text = "Label Regression Line on Plot?", 
             background = "white"), relx = 0.1, rely = 0.8, `in` = Regframe)
         Reg.RegLab.val <- tclVar("1")
         Reg.RegLab.CB <- tk2checkbutton(Regtt)
@@ -12432,7 +12432,7 @@ function ()
             background = "white")
         tkplace(frameMP, relx = 0.05, rely = 0.05, relheight = 0.9, 
             relwidth = 0.9, `in` = MGcomp$MPoint)
-        tkplace(tk2label(frameMP, text = "The cursor is now active. Please\nuse the cursor to select the point\nwhich you would like to relocate.", 
+        tkplace(tklabel(frameMP, text = "The cursor is now active. Please\nuse the cursor to select the point\nwhich you would like to relocate.", 
             background = "white"), relx = 0.1, rely = 0.2, `in` = frameMP)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             tkbind(img, "<Button-1>", PointtoMove)
@@ -12472,7 +12472,7 @@ function ()
             background = "white")
         tkplace(frameLP, relx = 0.05, rely = 0.05, relheight = 0.9, 
             relwidth = 0.9, `in` = MGcomp$LPoint)
-        tkplace(tk2label(frameLP, text = "The cursor is now active. Please\nuse the cursor to select the location\nwhich you would like to move the point to.", 
+        tkplace(tklabel(frameLP, text = "The cursor is now active. Please\nuse the cursor to select the location\nwhich you would like to move the point to.", 
             background = "white"), relx = 0.1, rely = 0.2, `in` = frameLP)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             tkbind(img, "<Button-1>", TargetLocation)
@@ -12559,7 +12559,7 @@ function ()
             background = "white")
         tkplace(frameRmp, relx = 0.05, rely = 0.05, relheight = 0.9, 
             relwidth = 0.9, `in` = MGcomp$RmPoint)
-        tkplace(tk2label(frameRmp, text = "The cursor is now active. Please\nuse the cursor to select the point\nwhich you would like to remove.", 
+        tkplace(tklabel(frameRmp, text = "The cursor is now active. Please\nuse the cursor to select the point\nwhich you would like to remove.", 
             background = "white"), relx = 0.1, rely = 0.2, `in` = frameRmp)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             tkbind(img, "<Button-1>", GetCoordsLeftClick.RemovePoint)
@@ -13075,7 +13075,7 @@ function ()
             ptcol <- MGvar$activeplot.pointcol.T5
             ptcol.temp <- MGvar$activeplot.pointcol.T5
         }
-        tkplace(tk2label(framePC, text = "Selected Points", background = "white"), 
+        tkplace(tklabel(framePC, text = "Selected Points", background = "white"), 
             relx = 0.1, rely = 0.35, `in` = framePC)
         ChangePtCol <- function() {
             ptcol.temp <<- tclvalue(.Tcl(paste("tk_chooseColor", 
@@ -13328,7 +13328,7 @@ function ()
             background = "white")
         tkplace(frameMG, relx = 0.05, rely = 0.05, relheight = 0.9, 
             relwidth = 0.9, `in` = MGcomp$MGroup)
-        tkplace(tk2label(frameMG, text = "The cursor is now active. Please\nuse the cursor to select the central\npoint of the groups' location.", 
+        tkplace(tklabel(frameMG, text = "The cursor is now active. Please\nuse the cursor to select the central\npoint of the groups' location.", 
             background = "white"), relx = 0.1, rely = 0.2, `in` = frameMG)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             tkbind(img, "<Button-1>", GroupMoveTargetLocation)
@@ -13561,7 +13561,7 @@ function ()
         tkplace(frameCC, relx = 0.01, rely = 0.01, relwidth = 0.98, 
             relheight = 0.98, `in` = CCols)
         fontsmall <- tkfont.create(family = "times", size = 9)
-        tkplace(tk2label(frameCC, text = "If a column of object catagories was included in the uploaded\ndata, the related catagory colours can be adjusted here.", 
+        tkplace(tklabel(frameCC, text = "If a column of object catagories was included in the uploaded\ndata, the related catagory colours can be adjusted here.", 
             font = fontsmall), relx = 0.03, rely = 0.15, `in` = frameCC)
         Cats <- names(MGvar$ClasTab)
         CatVar <- tclVar(Cats[1])
@@ -14162,7 +14162,7 @@ function ()
             tkplace(frameRA, relx = 0.01, rely = 0.01, relwidth = 0.98, 
                 relheight = 0.98, `in` = RemAx)
             fontsmall <- tkfont.create(family = "times", size = 9)
-            tkplace(tk2label(frameRA, text = "Select from the list below the variable you would like to\nremove from the plot. Repeating this process will\npreserve previous axes' removal.", 
+            tkplace(tklabel(frameRA, text = "Select from the list below the variable you would like to\nremove from the plot. Repeating this process will\npreserve previous axes' removal.", 
                 font = fontsmall), relx = 0.06, rely = 0.15, 
                 `in` = frameRA)
             DatVarNames <- colnames(MGvar$activedata)
@@ -14350,7 +14350,7 @@ function ()
                   relheight = 0.98, `in` = WtEuctt)
                 fontsmall <- tkfont.create(family = "times", 
                   size = 9)
-                tkplace(tk2label(frameWE, text = "The Weighted Euclidean Distance requires a   \nvector of weights for computation. This vector \nmust have a length equal to the number of \nvariables in your data.", 
+                tkplace(tklabel(frameWE, text = "The Weighted Euclidean Distance requires a   \nvector of weights for computation. This vector \nmust have a length equal to the number of \nvariables in your data.", 
                   font = fontsmall), relx = 0.08, rely = 0.15, 
                   `in` = frameWE)
                 On.WEUpload <- function() {
@@ -14399,10 +14399,10 @@ function ()
                   relheight = 0.98, `in` = Mahtt)
                 fontsmall <- tkfont.create(family = "times", 
                   size = 9)
-                tkplace(tk2label(frameMah, text = "The Mahalanobis Distance requires a sigma   \nmatrix for computation. You may use the\n covariance matrix of your data as a default,\n or upload your own.", 
+                tkplace(tklabel(frameMah, text = "The Mahalanobis Distance requires a sigma   \nmatrix for computation. You may use the\n covariance matrix of your data as a default,\n or upload your own.", 
                   font = fontsmall), relx = 0.1, rely = 0.15, 
                   `in` = frameMah)
-                tkplace(tk2label(frameMah, text = "Upload Sigma Matrix", 
+                tkplace(tklabel(frameMah, text = "Upload Sigma Matrix", 
                   background = "white"), relx = 0.1, rely = 0.6, 
                   `in` = frameMah)
                 MahUp <- tk2checkbutton(Mahtt)
@@ -14529,7 +14529,7 @@ function ()
         }
     }
     HomePage.Help <- function() {
-        shell.exec("http://web.uct.ac.za/depts/stats/")
+        shell.exec("http://mdsgui.r-forge.r-project.org/")
     }
     FuncCode.Display <- function() {
         CodeDisp = tktoplevel()
@@ -14544,7 +14544,7 @@ function ()
             background = "white")
         tkplace(FrameCD, relx = 0.02, relwidth = 0.96, rely = 0.02, 
             relheight = 0.96, `in` = CodeDisp)
-        tkplace(tk2label(FrameCD, text = "The following list is a select group of functions used\nby the MDS-GUI. Selecting an item will display the R\ncode for the respective function for the users interest.", 
+        tkplace(tklabel(FrameCD, text = "The following list is a select group of functions used\nby the MDS-GUI. Selecting an item will display the R\ncode for the respective function for the users interest.", 
             background = "white"), relx = 0.05, rely = 0.15, 
             `in` = FrameCD)
         funclist <- c("Classical Scaling", "Metric SMACOF", "2D Plot", 
@@ -16172,13 +16172,6 @@ function ()
         }
     }
     versioncheck <- function() {
-        RVers = R.Version()
-        if (RVers$major != "2" || RVers$minor != "13.0") {
-            mes2 = paste("The MDS-GUI was developed in R version 2.13.0. You are currently using version ", 
-                RVers$major, ".", RVers$minor, " Keeping with your currently installed version may effect the look of the MDS-GUI. It is highly recommened that you install R-2.13.0.", 
-                sep = "")
-            tkmessageBox(message = mes2, icon = "error", type = "ok")
-        }
         packs = installed.packages()
         for (i in 1:nrow(packs)) {
             if (rownames(packs)[i] == "tcltk2") {
@@ -16192,24 +16185,6 @@ function ()
             }
         }
     }
-    env <- environment(.libPaths)
-    assign(".lib.loc", shortPathName(get(".lib.loc", envir = env)), 
-        envir = env)
-    library("tkrplot")
-    library(rpanel)
-    memory.limit(4095)
-    require(tcltk)
-    require(graphics)
-    tclRequire("Tktable")
-    tclRequire("BWidget")
-    library(tkrplot)
-    library(tcltk2)
-    library(smacof)
-    library(MASS)
-    library(boot)
-    library(RColorBrewer)
-    library(rgl)
-    library(scatterplot3d)
     mytt <- tktoplevel()
     topMenu <- tkmenu(mytt)
     tkconfigure(mytt, menu = topMenu)
@@ -17113,17 +17088,17 @@ function ()
     labelText <- tclVar("No Active DataSet")
     PlotText <- tclVar("Active Plot is Plot1")
     dimText <- tclVar("p = 2")
-    tkplace(tk2label(frameBottomStrip, text = tclvalue(PlotText), 
+    tkplace(tklabel(frameBottomStrip, text = tclvalue(PlotText), 
         textvariable = PlotText, background = "white", font = bottomfont), 
         relx = 0.5, y = 0.01, `in` = frameBottomStrip)
-    tkplace(tk2label(frameBottomStrip, text = tclvalue(labelText), 
+    tkplace(tklabel(frameBottomStrip, text = tclvalue(labelText), 
         textvariable = labelText, background = "white", font = bottomfont), 
         relx = 0.33, y = 0.01, `in` = frameBottomStrip)
-    tkplace(tk2label(frameBottomStrip, text = tclvalue(dimText), 
+    tkplace(tklabel(frameBottomStrip, text = tclvalue(dimText), 
         textvariable = dimText, background = "white", font = bottomfont), 
         relx = 0.7, y = 0.01, `in` = frameBottomStrip)
     developerfont <- tkfont.create(family = "times", size = 6)
-    tkplace(tk2label(frameBottomStrip, text = "MDS-GUI Version 1.0. built in 2012\nAndrew Timm & Sugnet Lubbe, University of Cape Town", 
+    tkplace(tklabel(frameBottomStrip, text = "MDS-GUI Version 1.0. built in 2012\nAndrew Timm & Sugnet Lubbe, University of Cape Town", 
         background = "white", font = developerfont), relx = 0.8, 
         y = 0.001, `in` = frameBottomStrip)
     tkplace(frameBottomStrip, relx = 0.01, rely = 0.95, relwidth = 0.98, 
@@ -17144,7 +17119,7 @@ function ()
     iterrat <- tclVar(paste(MGvar$MDS.iter.max, "iters"))
     iterdispfont <- tkfont.create(family = "times", size = 6, 
         weight = "bold")
-    tkplace(tk2label(frameBottomStrip, text = tclvalue(iterrat), 
+    tkplace(tklabel(frameBottomStrip, text = tclvalue(iterrat), 
         textvariable = iterrat, background = "white", font = iterdispfont), 
         relx = 0.22, rely = 0.3, `in` = frameBottomStrip)
     Undolast <- function() tcl("event", "generate", .Tk.ID(mytt), 
@@ -17467,7 +17442,7 @@ function ()
         })
     tkadd(topMenu, "cascade", label = "Multivariate Tools", menu = functionMenu)
     Aboutfunc <- function() {
-        tkmessageBox(title = "MDS-GUI Information", message = "This is the MDS-GUI Version 0.1\n\nDeveloped by Andrew Timm and Sugnet Lubbe, Department of Statistical Sciences, University of Cape Town.\n\nContact email: timmand@gmail.com\n\nLicense Info...", 
+        tkmessageBox(title = "MDS-GUI Information", message = "This is the MDS-GUI Version 0.1\n\nDeveloped by Andrew Timm and Sugnet Lubbe, \nDepartment of Statistical Sciences, University of Cape Town.\n\nContact email: timmand@gmail.com\n\nLicense Info: GPL (>= 3)", 
             icon = "info", type = "ok")
     }
     helpMenu <- tkmenu(topMenu, tearoff = FALSE)
