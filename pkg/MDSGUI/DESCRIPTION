@@ -1,7 +1,7 @@
 Package: MDSGUI
 Type: Package
 Title: A GUI for interactive MDS in R
-Version: 0.1
+Version: 0.1.1
 Date: 2012-08-28
 Author: Andrew Timm and Sugnet Gardner-Lubbe
 Maintainer: Andrew Timm <timmand@gmail.com>
@@ -10,5 +10,4 @@ Description: A graphical user interface (GUI) for performing Multidimensional Sc
 License: GPL (>= 3)
 LazyLoad: yes
 OS_type: windows
-SystemRequirements: windows
-
+SystemRequirements: windows, 'BWidget', 'Tktable'
