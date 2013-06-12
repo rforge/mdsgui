@@ -2481,7 +2481,7 @@ tclRequire("BWidget")
                 MGvar$datatitle <<- NName
                 tclvalue(labelText) <- paste("Active Dataset is", 
                   MGvar$datatitle)
-                tkentryconfigure(dataMenu, 6, state = "disabled")
+                tkentryconfigure(dataMenu, 7, state = "disabled")
                 YesCol <- as.character(tclvalue(ColDat))
                 if (YesCol == "1") {
                   if (as.character(tclvalue(ColColumn)) == "First") {
@@ -2518,7 +2518,7 @@ tclRequire("BWidget")
                   MGvar$MDSmat.Cols.T3 <<- MGvar$MDSmat.Cols
                   MGvar$MDSmat.Cols.T4 <<- MGvar$MDSmat.Cols
                   MGvar$MDSmat.Cols.T5 <<- MGvar$MDSmat.Cols
-                  tkentryconfigure(dataMenu, 6, state = "active")
+                  tkentryconfigure(dataMenu, 7, state = "active")
                 }
                 else {
                   FirstPointColInitialise()
@@ -2574,7 +2574,201 @@ tclRequire("BWidget")
                   MGvar$MDSmat.Cols.T3 <<- as.vector(0)
                   MGvar$MDSmat.Cols.T4 <<- as.vector(0)
                   MGvar$MDSmat.Cols.T5 <<- as.vector(0)
-                  tkentryconfigure(dataMenu, 6, state = "disabled")
+                  tkentryconfigure(dataMenu, 7, state = "disabled")
+                }
+                tkdestroy(namingtt)
+                if (nrow(MGvar$activedata) > 50) {
+                  LargeDataOps()
+                }
+            }
+            tkplace(tkbutton(namingtt, text = "OK", width = 10, 
+                command = function() OnOk.Name()), relx = 0.38, 
+                rely = 0.925, `in` = namingtt)
+            tkbind(namingtt, "<Return>", OnOk.Name)
+            tkentryconfigure(EditDataMenu, 0, state = "active")
+            MGvar$tShepx <<- as.vector(0)
+            ClearRemindex()
+        }
+    }
+	LoadDataSetcsv = function() {
+        fileName <- tclvalue(tkgetOpenFile())
+        if (!nchar(fileName)) 
+            tkmessageBox(message = "No file was selected!")
+        else {
+            loadeddata = read.csv(fileName)
+            MGvar$activedata <<- loadeddata
+		rownames(MGvar$activedata) <<- MGvar$activedata[,1]
+            MGvar$activedata <<- MGvar$activedata[, -1]
+            namingtt <- tktoplevel()
+            tkwm.resizable(namingtt, "0", "0")
+            tkwm.deiconify(namingtt)
+            tkwm.title(namingtt, "New Active Dataset Options")
+            tkwm.geometry(namingtt, "350x400")
+            Loadcanvas = tkcanvas(namingtt, width = "1128", height = "756", 
+                bg = col.sec)
+            tkplace(Loadcanvas, relx = 0, rely = 0, relwidth = 1, 
+                relheight = 1, `in` = namingtt)
+            frameNaming <- tkwidget(namingtt, "TitleFrame", text = "Dataset Name", 
+                background = "white")
+            tkplace(frameNaming, relx = 0.02, rely = 0.02, relwidth = 0.96, 
+                relheight = 0.16, `in` = namingtt)
+            tkplace(tklabel(frameNaming, text = "Enter the name of your DataSet", 
+                background = "white"), relx = 0.08, rely = 0.4, 
+                `in` = frameNaming)
+            ChangingName = tclVar("")
+            NewNameBox = tkentry(namingtt, width = 15, textvariable = ChangingName)
+            tkplace(NewNameBox, relx = 0.65, rely = 0.4, `in` = frameNaming)
+            frameTrans <- tkwidget(namingtt, "TitleFrame", text = "Dataset Transpose", 
+                background = "white")
+            tkplace(frameTrans, relx = 0.02, rely = 0.19, relwidth = 0.96, 
+                relheight = 0.3, `in` = namingtt)
+            fontsmall <- tkfont.create(family = "times", size = 9)
+            tkplace(tklabel(frameTrans, text = "All procedures in this package require that the active data have\n objects as rows and variables as columns. If your data is not\n in this format then please transpose.", 
+                font = fontsmall), relx = 0.05, rely = 0.15, 
+                `in` = frameTrans)
+            tkplace(tklabel(frameTrans, text = "Transpose Active Data?", 
+                background = "white"), relx = 0.08, rely = 0.65, 
+                `in` = frameTrans)
+            cbtrans <- tk2checkbutton(namingtt)
+            cbTValue <- tclVar("0")
+            tkconfigure(cbtrans, variable = cbTValue)
+            tkplace(cbtrans, relx = 0.75, rely = 0.65, `in` = frameTrans)
+            frameScale <- tkwidget(namingtt, "TitleFrame", text = "Dataset Scale", 
+                background = "white")
+            tkplace(frameScale, relx = 0.02, rely = 0.5, relwidth = 0.96, 
+                relheight = 0.2, `in` = namingtt)
+            tkplace(tklabel(frameScale, text = "Scaling Data will scale the columns of your data between 0 and 1.", 
+                font = fontsmall), relx = 0.04, rely = 0.25, 
+                `in` = frameScale)
+            tkplace(tklabel(frameScale, text = "Scale your active data?", 
+                background = "white"), relx = 0.08, rely = 0.6, 
+                `in` = frameScale)
+            ScDat.val <- tclVar(0)
+            ScDat.CB <- tk2checkbutton(namingtt)
+            tkconfigure(ScDat.CB, variable = ScDat.val)
+            tkplace(ScDat.CB, relx = 0.75, rely = 0.6, `in` = frameScale)
+            frameCol <- tkwidget(namingtt, "TitleFrame", text = "Dataset Colours", 
+                background = "white")
+            tkplace(frameCol, relx = 0.02, rely = 0.71, relwidth = 0.96, 
+                relheight = 0.2, `in` = namingtt)
+            tkplace(tklabel(frameCol, text = "Does the data contain a column of object category information?", 
+                font = fontsmall), relx = 0.02, rely = 0.25, 
+                `in` = frameCol)
+            tkplace(tklabel(frameCol, text = "Yes", background = "white"), 
+                relx = 0.1, rely = 0.6, `in` = frameCol)
+            ColDat <- tclVar(0)
+            ColDat.CB <- tk2checkbutton(namingtt)
+            tkconfigure(ColDat.CB, variable = ColDat)
+            tkplace(ColDat.CB, relx = 0.25, rely = 0.6, `in` = frameCol)
+            tkplace(tklabel(frameCol, text = "Which Column?", 
+                background = "white"), relx = 0.4, rely = 0.6, 
+                `in` = frameCol)
+            ColColumn <- tclVar("First")
+            ColColumn.ComboBox <- tkwidget(namingtt, "ComboBox", 
+                editable = FALSE, values = c("First", "Last"), 
+                width = 6, textvariable = ColColumn)
+            tkplace(ColColumn.ComboBox, relx = 0.7, rely = 0.6, 
+                `in` = frameCol)
+            OnOk.Name <- function() {
+                MGvar$ClasTabCols <<- c()
+                NName = as.character(tclvalue(ChangingName))
+                MGvar$datatitle <<- NName
+                tclvalue(labelText) <- paste("Active Dataset is", 
+                  MGvar$datatitle)
+                tkentryconfigure(dataMenu, 7, state = "disabled")
+                YesCol <- as.character(tclvalue(ColDat))
+                if (YesCol == "1") {
+                  if (as.character(tclvalue(ColColumn)) == "First") {
+                    MGvar$ClasVec <<- MGvar$activedata[, 1]
+                    MGvar$activedata <<- MGvar$activedata[, -1]
+                  }
+                  if (as.character(tclvalue(ColColumn)) == "Last") {
+                    MGvar$ClasVec <<- MGvar$activedata[, ncol(MGvar$activedata)]
+                    MGvar$activedata <<- MGvar$activedata[, -ncol(MGvar$activedata)]
+                  }
+                  MGvar$ClasTab <<- table(MGvar$ClasVec)
+                  potcols <- c(brewer.pal(9, "Set1"), brewer.pal(12, 
+                    "Paired"))
+                  for (i in 1:nrow(MGvar$activedata)) {
+                    for (j in 1:length(MGvar$ClasTab)) {
+                      if (MGvar$ClasVec[i] == names(MGvar$ClasTab)[j]) {
+                        if (j == length(potcols)) {
+                          num = length(potcols)
+                        }
+                        if (j != length(potcols)) {
+                          num = j%%length(potcols)
+                        }
+                        MGvar$MDSmat.Cols[i] <<- potcols[num]
+                      }
+                    }
+                  }
+                  for (i in 1:length(MGvar$ClasTab)) {
+                    MGvar$ClasTabCols <<- c(MGvar$ClasTabCols, 
+                      potcols[i])
+                    names(MGvar$ClasTabCols)[i] <<- names(MGvar$ClasTab)[i]
+                  }
+                  MGvar$MDSmat.Cols.T1 <<- MGvar$MDSmat.Cols
+                  MGvar$MDSmat.Cols.T2 <<- MGvar$MDSmat.Cols
+                  MGvar$MDSmat.Cols.T3 <<- MGvar$MDSmat.Cols
+                  MGvar$MDSmat.Cols.T4 <<- MGvar$MDSmat.Cols
+                  MGvar$MDSmat.Cols.T5 <<- MGvar$MDSmat.Cols
+                  tkentryconfigure(dataMenu, 7, state = "active")
+                }
+                else {
+                  FirstPointColInitialise()
+                  PointColInitialise()
+                }
+                TOp = as.character(tclvalue(cbTValue))
+                if (TOp == "1") {
+                  MGvar$activedata <<- t(MGvar$activedata)
+                  tkmessageBox(message = paste("Your data has been transposed"))
+                }
+                Scl <- as.character(tclvalue(ScDat.val))
+                if (Scl == "1") {
+                  MGvar$activedata <<- stand.1.range(MGvar$activedata)
+                }
+                if (is.numeric(as.matrix(MGvar$activedata))) {
+                  if (0 %in% as.matrix(MGvar$activedata)) {
+                    tkentryconfigure(MDSMenuDistCal, 10, state = "disabled")
+                    if (MGvar$dMeas == "Wave-Hedges") {
+                      MGvar$dMeas <<- "Euclidean.Distance"
+                    }
+                    tkentryconfigure(MDSMenuDistCal, 6, state = "disabled")
+                    if (MGvar$dMeas == "Divergence") {
+                      MGvar$dMeas <<- "Euclidean.Distance"
+                    }
+                  }
+                  else {
+                    tkentryconfigure(MDSMenuDistCal, 10, state = "active")
+                    tkentryconfigure(MDSMenuDistCal, 6, state = "active")
+                  }
+                  new.dissim.meas(MGvar$activedata)
+                  MGvar$originaldistmat <<- MGvar$distmat
+                  MGvar$distmat.T1 <<- MGvar$distmat
+                  MGvar$distmat.T2 <<- MGvar$distmat
+                  MGvar$distmat.T3 <<- MGvar$distmat
+                  MGvar$distmat.T4 <<- MGvar$distmat
+                  MGvar$distmat.T5 <<- MGvar$distmat
+                  MGvar$maxdims <<- nrow(MGvar$distmat) - 1
+                  MGvar$removedpointsactivedata <<- MGvar$activedata
+                  tkentryconfigure(functionMenu, 5, state = "active")
+                  tkentryconfigure(MainPlotMenu1, 15, state = "active")
+                  tkentryconfigure(MainPlotMenu2, 15, state = "active")
+                  tkentryconfigure(MainPlotMenu3, 15, state = "active")
+                  tkentryconfigure(MainPlotMenu4, 15, state = "active")
+                  tkentryconfigure(MainPlotMenu5, 15, state = "active")
+                }
+                else {
+                  tkmessageBox(message = "Non-Numeric values in the data. Please retry data upload.", 
+                    type = "ok")
+                  MGvar$activedata <<- as.matrix(0)
+                  tclvalue(labelText) <- paste("No Active Dataset")
+                  MGvar$MDSmat.Cols.T1 <<- as.vector(0)
+                  MGvar$MDSmat.Cols.T2 <<- as.vector(0)
+                  MGvar$MDSmat.Cols.T3 <<- as.vector(0)
+                  MGvar$MDSmat.Cols.T4 <<- as.vector(0)
+                  MGvar$MDSmat.Cols.T5 <<- as.vector(0)
+                  tkentryconfigure(dataMenu, 7, state = "disabled")
                 }
                 tkdestroy(namingtt)
                 if (nrow(MGvar$activedata) > 50) {
@@ -2660,7 +2854,7 @@ tclRequire("BWidget")
                 MGvar$datatitle <<- NName
                 tclvalue(labelText) <- paste("Active Dataset is", 
                   MGvar$datatitle)
-                tkentryconfigure(dataMenu, 6, state = "disabled")
+                tkentryconfigure(dataMenu, 7, state = "disabled")
                 YesCol <- as.character(tclvalue(ColDat))
                 if (YesCol == "1") {
                   if (as.character(tclvalue(ColColumn)) == "First") {
@@ -2700,7 +2894,7 @@ tclRequire("BWidget")
                   MGvar$MDSmat.Cols.T3 <<- MGvar$MDSmat.Cols
                   MGvar$MDSmat.Cols.T4 <<- MGvar$MDSmat.Cols
                   MGvar$MDSmat.Cols.T5 <<- MGvar$MDSmat.Cols
-                  tkentryconfigure(dataMenu, 6, state = "active")
+                  tkentryconfigure(dataMenu, 7, state = "active")
                 }
                 else {
                   FirstPointColInitialise()
@@ -2750,7 +2944,7 @@ tclRequire("BWidget")
                       MGvar$MDSmat.Cols.T3 <<- as.vector(0)
                       MGvar$MDSmat.Cols.T4 <<- as.vector(0)
                       MGvar$MDSmat.Cols.T5 <<- as.vector(0)
-                      tkentryconfigure(dataMenu, 6, state = "disabled")
+                      tkentryconfigure(dataMenu, 7, state = "disabled")
                     }
                   }
                   else {
@@ -2764,7 +2958,7 @@ tclRequire("BWidget")
                     MGvar$MDSmat.Cols.T3 <<- as.vector(0)
                     MGvar$MDSmat.Cols.T4 <<- as.vector(0)
                     MGvar$MDSmat.Cols.T5 <<- as.vector(0)
-                    tkentryconfigure(dataMenu, 6, state = "disabled")
+                    tkentryconfigure(dataMenu, 7, state = "disabled")
                   }
                 }
                 else {
@@ -2778,7 +2972,7 @@ tclRequire("BWidget")
                   MGvar$MDSmat.Cols.T3 <<- as.vector(0)
                   MGvar$MDSmat.Cols.T4 <<- as.vector(0)
                   MGvar$MDSmat.Cols.T5 <<- as.vector(0)
-                  tkentryconfigure(dataMenu, 6, state = "disabled")
+                  tkentryconfigure(dataMenu, 7, state = "disabled")
                 }
                 if (nrow(MGvar$activedata) > 50) {
                   LargeDataOps()
@@ -2863,7 +3057,7 @@ tclRequire("BWidget")
                 `in` = frameCol)
             OnOk.Name <- function() {
                 MGvar$ClasTabCols <<- c()
-                tkentryconfigure(dataMenu, 6, state = "disabled")
+                tkentryconfigure(dataMenu, 7, state = "disabled")
                 YesCol <- as.character(tclvalue(ColDat))
                 if (YesCol == "1") {
                   if (as.character(tclvalue(ColColumn)) == "First") {
@@ -2903,7 +3097,7 @@ tclRequire("BWidget")
                   MGvar$MDSmat.Cols.T3 <<- MGvar$MDSmat.Cols
                   MGvar$MDSmat.Cols.T4 <<- MGvar$MDSmat.Cols
                   MGvar$MDSmat.Cols.T5 <<- MGvar$MDSmat.Cols
-                  tkentryconfigure(dataMenu, 6, state = "active")
+                  tkentryconfigure(dataMenu, 7, state = "active")
                 }
                 else {
                   FirstPointColInitialise()
@@ -2960,7 +3154,7 @@ tclRequire("BWidget")
                       MGvar$MDSmat.Cols.T3 <<- as.vector(0)
                       MGvar$MDSmat.Cols.T4 <<- as.vector(0)
                       MGvar$MDSmat.Cols.T5 <<- as.vector(0)
-                      tkentryconfigure(dataMenu, 6, state = "disabled")
+                      tkentryconfigure(dataMenu, 7, state = "disabled")
                     }
                   }
                   else {
@@ -2974,7 +3168,7 @@ tclRequire("BWidget")
                     MGvar$MDSmat.Cols.T3 <<- as.vector(0)
                     MGvar$MDSmat.Cols.T4 <<- as.vector(0)
                     MGvar$MDSmat.Cols.T5 <<- as.vector(0)
-                    tkentryconfigure(dataMenu, 6, state = "disabled")
+                    tkentryconfigure(dataMenu, 7, state = "disabled")
                   }
                 }
                 else {
@@ -2988,7 +3182,7 @@ tclRequire("BWidget")
                   MGvar$MDSmat.Cols.T3 <<- as.vector(0)
                   MGvar$MDSmat.Cols.T4 <<- as.vector(0)
                   MGvar$MDSmat.Cols.T5 <<- as.vector(0)
-                  tkentryconfigure(dataMenu, 6, state = "disabled")
+                  tkentryconfigure(dataMenu, 7, state = "disabled")
                 }
                 if (nrow(MGvar$activedata) > 50) {
                   LargeDataOps()
@@ -17299,7 +17493,8 @@ tclRequire("BWidget")
     LoadMenu <- tkmenu(topMenu, tearoff = FALSE)
     SaveMenu <- tkmenu(topMenu, tearoff = FALSE)
     EditDataMenu <- tkmenu(topMenu, tearoff = FALSE)
-    tkadd(dataMenu, "cascade", label = "Load Dataset", command = LoadDataSettxt)
+    tkadd(dataMenu, "cascade", label = "Load Dataset (txt)", command = LoadDataSettxt)
+    tkadd(dataMenu, "cascade", label = "Load Dataset (csv)", command = LoadDataSetcsv)
     tkbind(mytt, "<Control-L>", LoadDataSettxt)
     tkadd(dataMenu, "command", label = "Load Dissimilarity Matrix", 
         command = LoadDistSet)
