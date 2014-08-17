@@ -16421,7 +16421,7 @@ tclRequire("BWidget")
     Initialise.Variables()
     fontHeading <- tkfont.create(family = "times", size = 24, 
         weight = "bold", slant = "italic")
-    tkplace(tklabel(mytt, text = "The MDS-GUI: Version 0.1", 
+    tkplace(tklabel(mytt, text = "The MDS-GUI: Version 0.2", 
         foreground = "black", font = fontHeading, background = col.prim), 
         relx = 0.535, rely = 0.01, `in` = mytt)
     UNHeading.Font <- tkfont.create(family = "times", size = 16, 
@@ -17557,6 +17557,10 @@ tclRequire("BWidget")
             freshstart()
             MetricLeastSquaresScaling()
         })
+ tkadd(MDSMenu, "command", label = "Sammon Mapping", command = function() {
+        freshstart()
+        SammonMapping()
+    })
     tkadd(MDSMenu, "separator")
     tkadd(MDSMenu, "command", label = "            Non-Metric MDS", 
         font = fontMenuHeading)
@@ -17571,10 +17575,7 @@ tclRequire("BWidget")
             freshstart()
             MyKruskalsMDS()
         })
-    tkadd(MDSMenu, "command", label = "Sammon Mapping", command = function() {
-        freshstart()
-        SammonMapping()
-    })
+   
     tkadd(MDSMenu, "separator")
     tkadd(MDSMenu, "separator")
     tkadd(functionMenu, "cascade", label = "MDS", menu = MDSMenu)
@@ -17639,7 +17640,7 @@ tclRequire("BWidget")
         })
     tkadd(topMenu, "cascade", label = "Multivariate Tools", menu = functionMenu)
     Aboutfunc <- function() {
-        tkmessageBox(title = "MDS-GUI Information", message = "This is the MDS-GUI Version 0.1\n\nDeveloped by Andrew Timm and Sugnet Lubbe, \nDepartment of Statistical Sciences, University of Cape Town.\n\nContact email: timmand@gmail.com\n\nLicense Info: GPL (>= 3)", 
+        tkmessageBox(title = "MDS-GUI Information", message = "This is the MDS-GUI Version 0.2\n\nDeveloped by Andrew Timm and Sugnet Lubbe, \nDepartment of Statistical Sciences, University of Cape Town.\n\nContact email: timmand@gmail.com\n\nLicense Info: GPL (>= 3)", 
             icon = "info", type = "ok")
     }
     helpMenu <- tkmenu(topMenu, tearoff = FALSE)
@@ -17681,5 +17682,4 @@ tclRequire("BWidget")
     tkbind(mytt, "<Control-z>", UndoMove)
     tkfocus(mytt)
     tkwm.deiconify(mytt)
-    versioncheck()
 }
