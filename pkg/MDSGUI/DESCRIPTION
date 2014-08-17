@@ -5,7 +5,7 @@ Version: 0.1.2
 Date: 2012-08-28
 Author: Andrew Timm and Sugnet Gardner-Lubbe
 Maintainer: Andrew Timm <timmand@gmail.com>
-Depends: MASS, boot, RColorBrewer, scatterplot3d, tcltk, tcltk2,  tkrplot, rpanel, graphics, rgl, smacof
+Depends: MASS, boot, RColorBrewer, scatterplot3d, tcltk, tcltk2,  tkrplot, rpanel, graphics, rgl
 Description: A graphical user interface (GUI) for performing Multidimensional Scaling applications and interactively analysing the results all within the GUI environment. The MDS-GUI provides means of performing Classical Scaling, Least Squares Scaling, Metric SMACOF, Non-Metric SMACOF, Kruskals Analysis and Sammon Mapping with animated optimisation.
 License: GPL (>= 3)
 LazyLoad: yes
