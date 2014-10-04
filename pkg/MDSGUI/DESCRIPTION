@@ -1,7 +1,7 @@
 Package: MDSGUI
 Type: Package
 Title: A GUI for interactive MDS in R
-Version: 0.1.2
+Version: 0.1.3
 Date: 2012-08-28
 Author: Andrew Timm and Sugnet Gardner-Lubbe
 Maintainer: Andrew Timm <timmand@gmail.com>
