@@ -613,7 +613,6 @@ tclRequire("BWidget")
     OnPlotLeftClick <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             width <- as.numeric(tclvalue(tkwinfo("reqwidth", 
                 img)))
@@ -1033,7 +1032,6 @@ tclRequire("BWidget")
     OnPOPlotLeftClick <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         width <- as.numeric(tclvalue(tkwinfo("reqwidth", MGcomp$POimg)))
         height <- as.numeric(tclvalue(tkwinfo("reqheight", MGcomp$POimg)))
         xMin <- MGvar$parPlotSize[1] * width
@@ -1465,7 +1463,6 @@ tclRequire("BWidget")
         if (MGvar$GenSet.CalcShep == "yes") {
             xClick <- x
             yClick <- y
-            require(tcltk)
             width <- as.numeric(tclvalue(tkwinfo("reqwidth", 
                 imgshep)))
             height <- as.numeric(tclvalue(tkwinfo("reqheight", 
@@ -2075,7 +2072,6 @@ tclRequire("BWidget")
     Proc.OnLeftClick <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         width <- as.numeric(tclvalue(tkwinfo("reqwidth", procimg)))
         height <- as.numeric(tclvalue(tkwinfo("reqheight", procimg)))
         xMin <- MGvar$Proc.parPlotSize[1] * width
@@ -2196,7 +2192,6 @@ tclRequire("BWidget")
     OnPOProcLeftClick <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         width <- as.numeric(tclvalue(tkwinfo("reqwidth", MGcomp$POprocimg)))
         height <- as.numeric(tclvalue(tkwinfo("reqheight", MGcomp$POprocimg)))
         xMin <- MGvar$Proc.parPlotSize[1] * width
@@ -8290,7 +8285,6 @@ tclRequire("BWidget")
     POPShep.OnLeftClick <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         width <- as.numeric(tclvalue(tkwinfo("reqwidth", MGcomp$imgEShep)))
         height <- as.numeric(tclvalue(tkwinfo("reqheight", MGcomp$imgEShep)))
         xMin <- MGvar$Shep.parPlotSize[1] * width
@@ -10644,7 +10638,6 @@ tclRequire("BWidget")
     OnZoomLeftClick <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         width <- as.numeric(tclvalue(tkwinfo("reqwidth", MGcomp$zooming)))
         height <- as.numeric(tclvalue(tkwinfo("reqheight", MGcomp$zooming)))
         xMin <- MGvar$parPlotSizeZ[1] * width
@@ -10685,7 +10678,6 @@ tclRequire("BWidget")
     GetCoordsLeftClick <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             width <- as.numeric(tclvalue(tkwinfo("reqwidth", 
                 img)))
@@ -12985,7 +12977,6 @@ tclRequire("BWidget")
             MGvar$Shep.indexLabeled <<- c()
             xClick <- x
             yClick <- y
-            require(tcltk)
             width <- as.numeric(tclvalue(tkwinfo("reqwidth", 
                 imgshep)))
             height <- as.numeric(tclvalue(tkwinfo("reqheight", 
@@ -13167,7 +13158,6 @@ tclRequire("BWidget")
     BrushingMainPlot <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             width <- as.numeric(tclvalue(tkwinfo("reqwidth", 
                 img)))
@@ -13463,7 +13453,6 @@ tclRequire("BWidget")
     GroupMoveTargetLocation <- function(x, y) {
         xClick <- x
         yClick <- y
-        require(tcltk)
         if (tclvalue(MGvar$ActivePlottingTab) == "Tab1") {
             width <- as.numeric(tclvalue(tkwinfo("reqwidth", 
                 img)))
@@ -17557,10 +17546,6 @@ tclRequire("BWidget")
             freshstart()
             MetricLeastSquaresScaling()
         })
- tkadd(MDSMenu, "command", label = "Sammon Mapping", command = function() {
-        freshstart()
-        SammonMapping()
-    })
     tkadd(MDSMenu, "separator")
     tkadd(MDSMenu, "command", label = "            Non-Metric MDS", 
         font = fontMenuHeading)
@@ -17575,7 +17560,11 @@ tclRequire("BWidget")
             freshstart()
             MyKruskalsMDS()
         })
-   
+ 	tkadd(MDSMenu, "command", label = "Sammon Mapping", command = function() {
+        freshstart()
+        SammonMapping()
+    })   
+
     tkadd(MDSMenu, "separator")
     tkadd(MDSMenu, "separator")
     tkadd(functionMenu, "cascade", label = "MDS", menu = MDSMenu)
