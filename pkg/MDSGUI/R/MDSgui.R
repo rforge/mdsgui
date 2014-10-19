@@ -14716,6 +14716,11 @@ tclRequire("BWidget")
     HomePage.Help <- function() {
         shell.exec("http://mdsgui.r-forge.r-project.org/")
     }
+    Documents.Help <- function() {
+	  shell.exec("https://www.dropbox.com/sh/mvqn4dwdoi7edac/AAB2uuGELTW3pKtWvT3bpUR5a")	
+}
+
+
     FuncCode.Display <- function() {
         CodeDisp = tktoplevel()
         tkwm.resizable(CodeDisp, "0", "0")
@@ -17638,10 +17643,8 @@ tclRequire("BWidget")
     tkadd(helpMenu, "checkbutton", variable = MGvar$DispHelp.Var, 
         label = "Display Pop-Out Help", command = DispPopUpHelp)
     tkadd(helpMenu, "separator")
-    tkadd(helpMenu, "command", label = "Vignette", command = Incomplete, 
-        state = "disabled")
-    tkadd(helpMenu, "command", label = "User Manual", command = Incomplete, 
-        state = "disabled")
+    tkadd(helpMenu, "command", label = "Vignette", command = Documents.Help)
+    tkadd(helpMenu, "command", label = "User Manual", command = Documents.Help)
     tkadd(helpMenu, "command", label = "HomePage", command = HomePage.Help)
     tkadd(helpMenu, "separator")
     tkadd(helpMenu, "command", label = "About", command = Aboutfunc)
